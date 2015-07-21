@@ -15,7 +15,7 @@ $win = array(
 $playerpick = $arg[0];
 $botpick = $picks[array_rand($picks)];
   if ($playerpick == $botpick){
-    echo "$sender and $bot tied!";
+    echo "$sender and $bot both picked $playerpick and tied!";
   }
   else if (isset($win[$playerpick."_".$botpick])){
     echo "$sender picked $playerpick and ".$win[$playerpick."_".$botpick]." $bot's $botpick ";

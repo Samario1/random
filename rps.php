@@ -1,3 +1,4 @@
+<?php
 $picks = ["rock","paper","scissors","lizard","spock"];
 $win = array(
 "scissors_paper" : "cut", 
@@ -21,4 +22,4 @@ $botpick = $picks[array_rand($picks)];
   } else {
     echo "$bot picked $botpick and ".$win[$botpick."_".$playerpick]." $sender's $playerpick ";
   }
-
+?>

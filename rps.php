@@ -12,7 +12,7 @@ $win = array(
 "spock_rock" => "vaporized", 
 "rock_scissors" => "crushed"
 );
-$playerpick = $arg[0];
+$playerpick = $arg[0] or die("$sender - you have to pick one of these, to play this game: ".implode(", ",array_map("ucfirst",$picks)));
 $botpick = $picks[array_rand($picks)];
   if ($playerpick == $botpick){
     echo "$sender and $bot both picked $playerpick and tied!";

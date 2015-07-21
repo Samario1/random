@@ -17,7 +17,7 @@ $win = array(
 "scissors_terrarian" => "destrung"
 );
 $playerpick = isset($arg[0])?$arg[0]:die("$sender - you have to pick one of these, to play this game: ".implode(", ",array_map("ucfirst",$picks)));
-$playerpick=="help"?die("Welcome to RPS Shocky edition. You can see the code at: https://github.com/MRokas/random/blob/master/rps.php And if you want to playyou have to pick one of these, to play this game: ".implode(", ",array_map("ucfirst",$picks))):"";
+$playerpick=="help"?die("Welcome to RPS Shocky edition. You can see the code at: https://github.com/MRokas/random/blob/master/rps.php And if you want to play, you have to pick one of these, to play this game: ".implode(", ",array_map("ucfirst",$picks))):"";
 $botpick = $picks[array_rand($picks)];
   if (isset($win[$playerpick."_".$botpick])){
     echo "$sender picked $playerpick and ".$win[$playerpick."_".$botpick]." $bot's $botpick ";

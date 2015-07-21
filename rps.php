@@ -1,5 +1,5 @@
 <?php
-$picks = ["rock","paper","scissors","lizard","spock"];
+$picks = array("rock","paper","scissors","lizard","spock");
 $win = array(
 "scissors_paper" => "cut", 
 "paper_rock" => "covered", 

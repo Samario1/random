@@ -11,9 +11,9 @@ $win = array(
 "paper_spock" => "disproved",
 "spock_rock" => "vaporized", 
 "rock_scissors" => "crushed",
-"terrarian_lizard" => "strangles",
-"terrarian_spock" => "out-yoyos",
-"terrarian_rock" => "lassos",
+"terrarian_lizard" => "strangled",
+"terrarian_spock" => "out-yoyo'ed",
+"terrarian_rock" => "lassoed",
 "scissors_terrarian" => "destrung"
 );
 $playerpick = isset($arg[0])?$arg[0]:die("$sender - you have to pick one of these, to play this game: ".implode(", ",array_map("ucfirst",$picks)));

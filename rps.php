@@ -1,5 +1,5 @@
 <?php
-$picks = array("rock","paper","scissors","lizard","spock");
+$picks = array("rock","paper","scissors","lizard","spock","terrarian");
 $win = array(
 "scissors_paper" => "cut", 
 "paper_rock" => "covered", 
@@ -10,7 +10,9 @@ $win = array(
 "lizard_paper" => "ate",
 "paper_spock" => "disproved",
 "spock_rock" => "vaporized", 
-"rock_scissors" => "crushed"
+"rock_scissors" => "crushed",
+"terrarian_lizard" => "yoyo'ed",
+"scissors_terrarian" => "cutoff string of"
 );
 $playerpick = isset($arg[0])?$arg[0]:die("$sender - you have to pick one of these, to play this game: ".implode(", ",array_map("ucfirst",$picks)));
 $botpick = $picks[array_rand($picks)];

@@ -19,7 +19,9 @@ $botpick = $picks[array_rand($picks)];
   }
   else if (isset($win[$playerpick."_".$botpick])){
     echo "$sender picked $playerpick and ".$win[$playerpick."_".$botpick]." $bot's $botpick ";
-  } else {
+  } else if (isset($win[$botpick."_".$playerpick])){
     echo "$bot picked $botpick and ".$win[$botpick."_".$playerpick]." $sender's $playerpick ";
+  } else {
+    echo "$player - Pick one from this list:".implode(", ",$picks);
   }
 ?>

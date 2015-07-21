@@ -24,7 +24,6 @@ $botpick = $picks[array_rand($picks)];
     echo "$sender and $bot both picked $playerpick and tied!";
   } else if(in_array($playerpick,$picks) && in_array($botpick,$picks)){
     echo "$sender's $playerpick tied against $bot's $botpick";
-  }
   } else {
     echo "$sender - you have to pick one of these, to play this game: ".implode(", ",array_map("ucfirst",$picks));
   }

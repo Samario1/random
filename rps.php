@@ -11,7 +11,8 @@ $win = array(
 "paper_spock" => "disproved",
 "spock_rock" => "vaporized", 
 "rock_scissors" => "crushed",
-"terrarian_lizard" => "yoyo'ed",
+"terrarian_lizard" => "strangles",
+"terrarian_spock" => "out-yoyos",
 "terrarian_rock" => "lassos",
 "scissors_terrarian" => "destrung"
 );

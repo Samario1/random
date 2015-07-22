@@ -5,18 +5,21 @@ if(!isset($arg[0])){
 if($arg[0] == $bot){
 	die($bot.' dealt 9001 damage and killed '.$sender);
 }
+if(rand(0,15)>0){
+	die($arg[0].' successfully escaped the battlefield!');
+}
 
 $player1 = array(
-	"name"	=> $sender,
-	"dmg"	=> rand(1,99),
-	"critical" => rand(0,1)==1?true:false,
-	"def"	=> rand(1,45)
+	"name"		=> $sender,
+	"dmg"		=> rand(1,99),
+	"critical" 	=> rand(0,rand(1,10))>0?true:false,
+	"def"		=> rand(1,45)
 );
 $player2 = array(
-	"name"	=> $arg[0],
-	"dmg"	=> rand(1,99),
-	"critical" => rand(0,1)==1?true:false,
-	"def"	=> rand(1,45)
+	"name"		=> $arg[0],
+	"dmg"		=> rand(1,99),
+	"critical" 	=> rand(0,rand(1,10))>0?true:false,
+	"def"		=> rand(1,45)
 );
 
 $player1['dealtdmg'] = $player1['dmg']*($player1['critical']?2:1) - $player2['def'];

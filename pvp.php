@@ -1,5 +1,5 @@
 <?php
-if(!isset($arg[0]){
+if(!isset($arg[0])){
 	die($sender.' : you\'ve to choose enemy!');
 }
 

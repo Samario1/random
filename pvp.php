@@ -12,13 +12,13 @@
 	$player1 = array(
 		"name"		=> $sender,
 		"dmg"		=> rand(1,99),
-		"critical" 	=> rand(0,rand(1,10))>0?true:false,
+		"critical" 	=> rand(0,3)==2?true:false,
 		"def"		=> rand(1,45)
 	);
 	$player2 = array(
 		"name"		=> $arg[0],
 		"dmg"		=> rand(1,99),
-		"critical" 	=> rand(0,rand(1,10))>0?true:false,
+		"critical" 	=> rand(0,3)==2?true:false,
 		"def"		=> rand(1,45)
 	);
 	

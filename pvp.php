@@ -9,17 +9,16 @@ if($arg[0] == $bot){
 $player1 = array(
 	"name"	=> $sender,
 	"dmg"	=> rand(1,99),
-	"def"	=> rand(1,99)
+	"def"	=> rand(1,45)
 );
 $player2 = array(
 	"name"	=> $arg[0],
 	"dmg"	=> rand(1,99),
-	"def"	=> rand(1,99)
+	"def"	=> rand(1,45)
 );
-$defp = rand(1,10)/10;
 
-$player1['dealtdmg'] = $player1['dmg'] - $player2['def']*$defp;
-$player2['dealtdmg'] = $player2['dmg'] - $player1['def']*$defp;
+$player1['dealtdmg'] = $player1['dmg'] - $player2['def'];
+$player2['dealtdmg'] = $player2['dmg'] - $player1['def'];
 
 if($player1['dealtdmg'] > $player2['dealtdmg']){
 	echo $player1['name'].' dealt '.$player1['dmg'].' damage and killed '.$player2['name'].' !';

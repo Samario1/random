@@ -5,7 +5,7 @@ if(!isset($arg[0])){
 if($arg[0] == $bot){
 	die($bot.' dealt 9001 damage and killed '.$sender);
 }
-if(rand(0,15)>0){
+if(rand(0,15)==13){
 	die($arg[0].' successfully escaped the battlefield!');
 }
 

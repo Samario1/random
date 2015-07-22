@@ -15,14 +15,14 @@ $player2 = array(
 );
 $defp = rand(1,10)/10;
 
-$player1['dealtdmg'] = $player1->dmg - $player2->def*$defp;
-$player2['dealtdmg'] = $player2->dmg - $player1->def*$defp;
+$player1['dealtdmg'] = $player1['dmg'] - $player2['def']*$defp;
+$player2['dealtdmg'] = $player2['dmg'] - $player1['def']*$defp;
 
-if($player1->dealtdmg > $player2->dealtdmg){
-	echo $player1->name.'dealt '.$player1->dmg.' and killed '.$player2->name.'!';
-}else if($player2->dealtdmg > $player1->dealtdmg){
-	echo $player2->name.'dealt '.$player2->dmg.' and killed '.$player1->name.'!';
-}else if($player1->dealtdmg == $player2->dealtdmg){
-	echo $player1->name.' and '.$player2->name.' tied in the battle!';
+if($player1['dealtdmg'] > $player2['dealtdmg']){
+	echo $player1['name'].'dealt '.$player1['dmg'].' and killed '.$player2['name'].'!';
+}else if($player2['dealtdmg'] > $player1['dealtdmg']){
+	echo $player2['name'].'dealt '.$player2['dmg'].' and killed '.$player1['name'].'!';
+}else if($player1['dealtdmg'] == $player2['dealtdmg']){
+	echo $player1['name'].' and '.$player2['name'].' tied in the battle!';
 }
 ?>

@@ -3,7 +3,7 @@ if(!isset($arg[0])){
 	die($sender.' : you\'ve to choose enemy!');
 }
 if($arg[0] == $bot){
-	die($bot.'dealt 9001 damage and killed'.$sender);
+	die($bot.'dealt 9001 damage and killed '.$sender);
 }
 
 $player1 = array(

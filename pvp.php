@@ -1,3 +1,4 @@
+<?php
 if(!isset($arg[0]){
 	die($sender.' : you\'ve to choose enemy!');
 }
@@ -24,3 +25,4 @@ if($player1->dealtdmg > $player2->dealtdmg){
 }else if($player1->dealtdmg == $player2->dealtdmg){
 	echo $player1->name.' and '.$player2->name.' tied in the battle!';
 }
+?>

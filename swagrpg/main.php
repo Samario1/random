@@ -1,6 +1,7 @@
 <?php
 
 $_STATE = (array)$_STATE;
+$player = (array)$_STATE[$sender];
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
@@ -32,7 +33,7 @@ switch ($q){
     die('Monster have yet to start spawning!');
     break;
   case "me":
-    die($sender.' |> Level:'.$_STATE[$sender]['l']);
+    die($sender.' |> Level:'.$player['l']);
   default:
     die('');
 }

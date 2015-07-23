@@ -38,11 +38,15 @@ switch ($q){
         die('Biome does not exist!');
     }
     break;
-  case "me":
+  case "me-debug":
     print_r($player);
-    //die($sender.' |> Level:'.$player["l"]);
+    //die($sender.' |> Level:'.$player[0]["l"]);
+    break;
+  case "me":
+    die($sender.' |> Level:'.$player[0]["l"]);
   case "reset":
     unset($_STATE[$sender]);
+    break;
   default:
     die('');
 }

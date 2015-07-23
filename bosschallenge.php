@@ -40,7 +40,96 @@ $BOSS_LIST = array(
     "Moon Lord"
   )
 );
+$WEAPON_LIST = array(
+	"1" => (
+		"Copper Bow",
+		"Copper Hammer",
+		"Copper Axe",
+		"Copper Shortsword",
+		"Copper Broadsword",
+		"Copper Pickaxe",
+		"Silver Bow",
+		"Silver Hammer",
+		"Silver Axe",
+		"Silver Shortsword",
+		"Silver Broadsword",
+		"Silver Pickaxe",
+		"Gold Bow",
+		"Gold Hammer",
+		"Gold Axe",
+		"Gold Shortsword",
+		"Gold Broadsword",
+		"Gold Pickaxe",
+		"Iron Pickaxe",
+		"Iron Broadsword",
+		"Iron Shortsword",
+		"Iron Hammer",
+		"Iron Axe",
+		"Wooden Sword",
+		"Wooden Bow",
+		"Platinum Bow",
+		"Platinum Hammer",
+		"Platinum Axe",
+		"Platinum Shortsword",
+		"Platinum Broadsword",
+		"Platinum Pickaxe",
+		"Tungsten Bow",
+		"Tungsten Hammer",
+		"Tungsten Axe",
+		"Tungsten Shortsword",
+		"Tungsten Broadsword",
+		"Tungsten Pickaxe",
+		"Lead Bow",
+		"Lead Hammer",
+		"Lead Axe",
+		"Lead Shortsword",
+		"Lead Broadsword",
+		"Lead Pickaxe",
+		"Tin Bow",
+		"Tin Hammer",
+		"Tin Axe",
+		"Tin Shortsword",
+		"Tin Broadsword",
+		"Tin Pickaxe",
+		"Cactus Sword",
+		"Cactus Pickaxe",
+		"Shadewood Sword",
+		"Shadewood Hammer",
+		"Shadewood Bow",
+		"Ebonwood Sword",
+		"Ebonwood Hammer",
+		"Ebonwood Bow",
+		"Rich Mahogany Sword",
+		"Rich Mahogany Hammer",
+		"Rich Mahogany Bow",
+		"Pearlwood Sword",
+		"Pearlwood Hammer",
+		"Pearlwood Bow",
+		"Spear",
+		"Blowpipe",
+		"Wooden Boomerang",
+		"Grenade",
+		
+	),
+	"2" => (
+	
+	),
+	"3" => (
+	
+	),
+	"4" => (
+	
+	),
+	"5" => (
+	
+	),
+	"6" => (
+	
+	),
+);
 
+//$tier = rand(1,6);
+$tier = '1';
 
-
+echo $sender.' you must kill '.$BOSS_LIST['1'][array_rand($BOSS_LIST['1'])].' using The '.$WEAPON_LIST['1'][array_rand($WEAPON_LIST['1'])];
 ?>

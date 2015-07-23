@@ -16,7 +16,8 @@ switch ($q){
       die('');
     }
     $_STATE[$sender] = array();
-    $_STATE[$sender]['status'] = 'Joined';
+    $_STATE[$sender]['s'] = 'Joined';
+    $_STATE[$sender]['l'] = 0;
     break;
   case "pvp":
     if(isset($w) && isset($_STATE[$w]) ){
@@ -27,6 +28,7 @@ switch ($q){
       die('Player does not exist');
     }
     break;
+  case ""
   default:
     die('');
 }

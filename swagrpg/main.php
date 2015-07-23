@@ -40,7 +40,6 @@ switch ($q){
     break;
   case "me-debug":
     print_r($player);
-    //die($sender.' |> Level:'.$player[0]["l"]);
     break;
   case "me":
     die($sender.' |> Level:'.$player[0]["l"]);

@@ -1,7 +1,7 @@
 <?php
 
 $_STATE = (array)$_STATE;
-$player = isset($_STATE[$sender])?(array)$_STATE[$sender]:"";
+$player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true):"";
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
@@ -16,9 +16,7 @@ switch ($q){
     if(isset($_STATE[$sender])){
       die('');
     }
-    $_STATE[$sender] = array();
-    $_STATE[$sender]['s'] = 'Joined';
-    $_STATE[$sender]['l'] = 0;
+    $_STATE[$sender] = '[{"j":true,"l":0}]';
     die('Welcome to TerrariaRPG - Maintained by swaganomic (https://github.com/MRokas), running on '.$bot);
     break;
   case "pvp":
@@ -32,6 +30,10 @@ switch ($q){
     break;
   case "pve":
     die('Monster have yet to start spawning!');
+    case($w){
+      
+      
+    }
     break;
   case "me":
     die($sender.' |> Level:'.$player['l']);

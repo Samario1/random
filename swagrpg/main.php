@@ -1,7 +1,7 @@
 <?php
 
 $_STATE = (array)$_STATE;
-$player = (array)$_STATE[$sender];
+$player = isset((array)$_STATE[$sender])?(array)$_STATE[$sender]:"";
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 

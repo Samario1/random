@@ -34,6 +34,8 @@ switch ($q){
       case "forest":
         die('You are in the forest');
         break;
+      default:
+        die('Biome does not exist, or hasn\'t been generated yet!);
     }
     break;
   case "me":

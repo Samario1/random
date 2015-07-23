@@ -1,6 +1,7 @@
 <?php
 
 function gainExp($p,$e){
+  print_r($p);
   $p['q']+=$e;
   echo 'You have gained '.$e.' experience!';
   if($p['q']>=$p['w']){

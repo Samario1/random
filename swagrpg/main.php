@@ -31,6 +31,8 @@ switch ($q){
   case "pve":
     die('Monster have yet to start spawning!');
     break;
+  case "me":
+    die($sender.' |> Level:'.$_STATE[$sender]['l']);
   default:
     die('');
 }

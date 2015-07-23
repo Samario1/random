@@ -1,5 +1,7 @@
 <?php
 
+include 'actions.php';
+
 $_STATE = (array)$_STATE;
 $player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true):array();
 $q = isset($arg[0])?$arg[0]:"";

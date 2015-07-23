@@ -18,7 +18,7 @@ $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
 if(count($player) < 2){
-  isset($player[0]['j'])?$player[0]['j']1:''; // joined
+  isset($player[0]['j'])?$player[0]['j']=1:''; // joined
   isset($player[0]['l'])?$player[0]['l']=0:''; // level
   isset($player[0]['q'])?$player[0]['q']=0:''; // currentExp
   isset($player[0]['w'])?$player[0]['w']=10:''; // maxExp

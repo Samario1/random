@@ -57,6 +57,18 @@ switch ($q){
         die('Biome does not exist!');
     }
     break;
+  case "pve-debug":
+    switch ($w) {
+      case "forest":
+        $player[0] = gainExp($player[0],9);
+        print_r($player[0]);
+        $_STATE[$sender] = json_encode($player[0]);
+        die('You are in the forest');
+        break;
+      default:
+        die('Biome does not exist!');
+    }
+    break;
   case "me-debug":
     print_r($player);
     die('');
@@ -72,6 +84,6 @@ switch ($q){
     die('');
 }
 
-$_STATE[$sender] = json_encode($player[0]);
+
 
 ?>

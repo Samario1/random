@@ -83,7 +83,4 @@ switch ($q){
   default:
     die('');
 }
-
-
-
 ?>

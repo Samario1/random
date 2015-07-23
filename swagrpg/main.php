@@ -1,7 +1,7 @@
 <?php
 
 $_STATE = (array)$_STATE;
-$player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true)[0]:"";
+$player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true):array();
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 

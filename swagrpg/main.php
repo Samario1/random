@@ -20,7 +20,7 @@ switch ($q){
     break;
   case "pvp":
     if(isset($w) && isset($_STATE[$w]) ){
-      die($sender.' has attacked '.$w;
+      die($sender.' has attacked '.$w);
     }else if(!isset($w)){
       die('You have to specify other player!');
     }else if(!isset($_STATE[isset($w)])){

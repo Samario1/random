@@ -1,7 +1,7 @@
 <?php
 
 $_STATE = (array)$_STATE;
-if(isset((array)$_STATE[$sender]){$player = (array)$_STATE[$sender]};
+try{$player = (array)$_STATE[$sender]}catch(Expection $ex){die('Welcome to swagRPG, use join to start playing!');};
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 

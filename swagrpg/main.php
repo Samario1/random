@@ -39,7 +39,7 @@ switch ($q){
     die('Welcome to swagRPG - Maintained by swaganomic (https://github.com/MRokas), running on '.$bot);
     break;
   case "pvp":
-    if(isset($w) && isset($state[$w]) ){
+    if(isset($w) && isset($_STATE->{$w}) ){
       die($sender.' has attacked '.$w);
     }else if(!isset($w)){
       die('You have to specify other player!');
@@ -62,7 +62,7 @@ switch ($q){
       case "forest":
         $player[0] = gainExp($player[0],9);
         print_r($player[0]);
-        $_STATE[$sender] = json_encode($player[0]);
+        $_STATE->{$sender} = json_encode($player[0]);
         die('You are in the forest');
         break;
       default:
@@ -77,7 +77,7 @@ switch ($q){
     die($sender.' |> Level:'.$player[0]["l"]);
     break;
   case "reset":
-    unset($_STATE[$sender]);
+    unset($_STATE->{$sender});
     die('');
     break;
   default:

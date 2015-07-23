@@ -1,8 +1,8 @@
 <?php
 
 $_STATE = (array)$_STATE;
-$q = $arg[0];
-$w = $arg[1];
+$q = isset($arg[0])?$arg[0]:"";
+$w = isset($arg[1])?$arg[1]:"";
 
 if(!isset($q)){
   if(isset($_STATE[$sender])){

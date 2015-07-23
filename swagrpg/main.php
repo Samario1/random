@@ -1,7 +1,7 @@
 <?php
 
 $_STATE = (array)$_STATE;
-$player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true):"";
+$player = isset($_STATE[$sender])?json_decode($_STATE[$sender][0],true):"";
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
@@ -39,9 +39,7 @@ switch ($q){
     }
     break;
   case "me":
-    print_r($player);
-    die('');
-    //die($sender.' |> Level:'.$player['l']);
+    die($sender.' |> Level:'.$player['l']);
   case "reset":
     unset($_STATE[$sender]);
   default:

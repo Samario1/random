@@ -44,6 +44,7 @@ switch ($q){
     break;
   case "me":
     die($sender.' |> Level:'.$player[0]["l"]);
+    break;
   case "reset":
     unset($_STATE[$sender]);
     break;

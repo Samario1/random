@@ -35,7 +35,7 @@ switch ($q){
     if(isset($state[$sender])){
       die('');
     }
-    $state[$sender] = '[{"j":1,"l":0,"q":0,"w":10}]';
+    $_STATE->{$sender} = '[{"j":1,"l":0,"q":0,"w":10}]';
     die('Welcome to swagRPG - Maintained by swaganomic (https://github.com/MRokas), running on '.$bot);
     break;
   case "pvp":

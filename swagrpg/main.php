@@ -10,6 +10,7 @@ function gainExp($p,$e){
     $p['w']*=1.1;
     echo 'You have gained a level!';
   }
+  print_r($p);
   return $p;
 }
 

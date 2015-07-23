@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($arg[0])){
-  if(isset($_STATE[$sender])){
+  if(isset($_STATE["{$sender}"])){
     die($sender.' : Level: 0');
   }
   die('Welcome to swagRPG, use join to start playing!');

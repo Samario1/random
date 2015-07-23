@@ -9,7 +9,7 @@ function gainExp($p,$e){
     $p['w']*=1.1;
     echo 'You have gained a level!';
   }
-  die('');
+  return $p;
 }
 
 $_STATE = (array)$_STATE;
@@ -51,7 +51,7 @@ switch ($q){
   case "pve":
     switch ($w) {
       case "forest":
-        gainExp($player[0],1);
+        $player[0] = gainExp($player[0],9);
         die('You are in the forest');
         break;
       default:

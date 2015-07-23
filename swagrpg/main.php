@@ -30,7 +30,7 @@ switch ($q){
     break;
   case "pve":
     die('Monster have yet to start spawning!');
-    case($w){
+    switch($w){
       case "forest":
         die('You are in the forest');
         break;

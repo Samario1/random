@@ -41,6 +41,7 @@ switch ($q){
   case "pve":
     switch ($w) {
       case "forest":
+        gainExp($player,1);
         die('You are in the forest');
         break;
       default:

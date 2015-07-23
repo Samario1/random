@@ -71,4 +71,6 @@ switch ($q){
     die('');
 }
 
+$_STATE[$sender] = json_encode($player[0]);
+
 ?>

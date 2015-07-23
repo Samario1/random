@@ -17,7 +17,7 @@ switch ($q){
       die('');
     }
     $_STATE[$sender] = '[{"j":1,"l":0}]';
-    die('Welcome to TerrariaRPG - Maintained by swaganomic (https://github.com/MRokas), running on '.$bot);
+    die('Welcome to swagRPG - Maintained by swaganomic (https://github.com/MRokas), running on '.$bot);
     break;
   case "pvp":
     if(isset($w) && isset($_STATE[$w]) ){

@@ -41,7 +41,7 @@ $BOSS_LIST = array(
   )
 );
 $WEAPON_LIST = array(
-	"1" => (
+	"1" => array(
 		"Copper Bow",
 		"Copper Hammer",
 		"Copper Axe",
@@ -111,19 +111,19 @@ $WEAPON_LIST = array(
 		"Grenade",
 		
 	),
-	"2" => (
+	"2" => array(
 	
 	),
-	"3" => (
+	"3" => array(
 	
 	),
-	"4" => (
+	"4" => array(
 	
 	),
-	"5" => (
+	"5" => array(
 	
 	),
-	"6" => (
+	"6" => array(
 	
 	),
 );

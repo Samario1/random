@@ -28,7 +28,8 @@ switch ($q){
       die('Player does not exist');
     }
     break;
-  case ""
+  case "pve":
+    break
   default:
     die('');
 }

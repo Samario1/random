@@ -6,8 +6,8 @@ $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
 if(count($player) < 2){
-  isset($player['l'])?$player['l']=0;'';
-  isset($player['j'])?$player['j']=1;'';
+  isset($player['l'])?$player['l']=0:'';
+  isset($player['j'])?$player['j']=1:'';
 }
 
 if(!isset($q)){

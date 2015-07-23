@@ -12,8 +12,8 @@ function gainExp($p,$e){
   return $p;
 }
 
-$_STATE = (array)$_STATE;
-$player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true):array();
+$state = (array)$_STATE;
+$player = isset($state[$sender])?json_decode($state[$sender],true):array();
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
@@ -25,25 +25,25 @@ if(count($player) < 4){
 }
 
 if(!isset($q)){
-  if(isset($_STATE[$sender])){
+  if(isset($state[$sender])){
     die($sender.' : Level: 0');
   }
   die('Welcome to swagRPG, use join to start playing!');
 }
 switch ($q){
   case "join":
-    if(isset($_STATE[$sender])){
+    if(isset($state[$sender])){
       die('');
     }
-    $_STATE[$sender] = '[{"j":1,"l":0,"q":0,"w":10}]';
+    $state[$sender] = '[{"j":1,"l":0,"q":0,"w":10}]';
     die('Welcome to swagRPG - Maintained by swaganomic (https://github.com/MRokas), running on '.$bot);
     break;
   case "pvp":
-    if(isset($w) && isset($_STATE[$w]) ){
+    if(isset($w) && isset($state[$w]) ){
       die($sender.' has attacked '.$w);
     }else if(!isset($w)){
       die('You have to specify other player!');
-    }else if(!isset($_STATE[isset($w)])){
+    }else if(!isset($state[isset($w)])){
       die('Player does not exist');
     }
     break;

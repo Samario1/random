@@ -19,7 +19,7 @@ switch ($q){
     $_STATE[$sender] = array();
     $_STATE[$sender]['s'] = 'Joined';
     $_STATE[$sender]['l'] = 0;
-    die('Welcome to swagRPG - soon to be moved to #<TBD> ');
+    die('Welcome to TerrariaRPG - Maintained by swaganomic(https://github.com/MRokas), running on '.$bot);
     break;
   case "pvp":
     if(isset($w) && isset($_STATE[$w]) ){

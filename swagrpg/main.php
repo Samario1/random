@@ -6,8 +6,11 @@ $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
 if(count($player) < 2){
-  isset($player['l'])?$player['l']=0:'';
-  isset($player['j'])?$player['j']=1:'';
+  isset($player['j'])?$player['j']=1:''; // joined
+  isset($player['l'])?$player['l']=0:''; // level
+  isset($player['q'])?$player['q']=0:''; // currentExp
+  isset($player['w'])?$player['w']=10:''; // maxExp
+
 }
 
 if(!isset($q)){
@@ -21,7 +24,7 @@ switch ($q){
     if(isset($_STATE[$sender])){
       die('');
     }
-    $_STATE[$sender] = '[{"j":1,"l":0}]';
+    $_STATE[$sender] = '[{"j":1,"l":0,"q":0,"w":10}]';
     die('Welcome to swagRPG - Maintained by swaganomic (https://github.com/MRokas), running on '.$bot);
     break;
   case "pvp":

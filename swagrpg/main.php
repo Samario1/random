@@ -1,7 +1,6 @@
 <?php
 
 function gainExp($p,$e){
-  print_r($p);
   $p['q']+=$e;
   echo 'You have gained '.$e.' experience!';
   if($p['q']>=$p['w']){
@@ -10,7 +9,6 @@ function gainExp($p,$e){
     $p['w']*=1.1;
     echo 'You have gained a level!';
   }
-  print_r($p);
   return $p;
 }
 
@@ -53,6 +51,7 @@ switch ($q){
     switch ($w) {
       case "forest":
         $player[0] = gainExp($player[0],9);
+        $_STATE->{$sender} = json_encode($player[0]);
         die('You are in the forest');
         break;
       default:

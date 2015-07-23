@@ -1,6 +1,6 @@
 <?php
 
-include 'actions.php';
+include 'https://raw.githubusercontent.com/MRokas/random/master/swagrpg/actions.php';
 
 $_STATE = (array)$_STATE;
 $player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true):array();

@@ -5,6 +5,11 @@ $player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true):array();
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
+if(count($player) < 2){
+  isset($player['l'])?$player['l']=0;'';
+  isset($player['j'])?$player['j']=1;'';
+}
+
 if(!isset($q)){
   if(isset($_STATE[$sender])){
     die($sender.' : Level: 0');

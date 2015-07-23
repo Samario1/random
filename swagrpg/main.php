@@ -29,7 +29,8 @@ switch ($q){
     }
     break;
   case "pve":
-    break
+    die('Monster have yet to start spawning!');
+    break;
   default:
     die('');
 }

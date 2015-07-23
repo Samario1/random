@@ -8,10 +8,10 @@ $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
 if(count($player) < 2){
-  isset($player['j'])?$player['j']=1:''; // joined
-  isset($player['l'])?$player['l']=0:''; // level
-  isset($player['q'])?$player['q']=0:''; // currentExp
-  isset($player['w'])?$player['w']=10:''; // maxExp
+  isset($player[0]['j'])?$player['j'][0]=1:''; // joined
+  isset($player[0]['l'])?$player['l'][0]=0:''; // level
+  isset($player[0]['q'])?$player['q'][0]=0:''; // currentExp
+  isset($player[0]['w'])?$player['w'][0][0]=10:''; // maxExp
 
 }
 
@@ -41,7 +41,7 @@ switch ($q){
   case "pve":
     switch ($w) {
       case "forest":
-        gainExp($player,1);
+        gainExp($player[0],1);
         die('You are in the forest');
         break;
       default:

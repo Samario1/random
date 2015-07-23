@@ -17,12 +17,11 @@ $player = isset($_STATE[$sender])?json_decode($_STATE[$sender],true):array();
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
-if(count($player) < 2){
+if(count($player) < 4){
   isset($player[0]['j'])?$player[0]['j']=1:''; // joined
   isset($player[0]['l'])?$player[0]['l']=0:''; // level
   isset($player[0]['q'])?$player[0]['q']=0:''; // currentExp
   isset($player[0]['w'])?$player[0]['w']=10:''; // maxExp
-
 }
 
 if(!isset($q)){
@@ -60,12 +59,14 @@ switch ($q){
     break;
   case "me-debug":
     print_r($player);
+    die('');
     break;
   case "me":
     die($sender.' |> Level:'.$player[0]["l"]);
     break;
   case "reset":
     unset($_STATE[$sender]);
+    die('');
     break;
   default:
     die('');

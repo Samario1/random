@@ -53,7 +53,7 @@ function action_pve($p,$m,$c,$e){
 // (w) => Max Exp
 // (t) => Timestamp of last action
 // (o) => Action cooldown
-echo "TEST 0.0.27 <|> ";
+echo "TEST 0.0.28 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -97,5 +97,10 @@ switch ($arg[0]){
       die();
     }
     break;
+  case "help":
+    die('Use [pve <biome>] to fight mobs. Use [pve] to get biomes list. Use [me] to get information about yourself.');
+    break;
+  default:
+    die('Invalid argument! Use help to get more info!')
 }
 ?>

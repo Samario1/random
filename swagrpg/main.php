@@ -13,10 +13,16 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
   $_STATE->{$sender} = json_encode($p);
 }
 
-function gainExp($p,$e){
+/*
+ * @param (Object)  $p - Player
+ * @param (Integer) $e - Exp 
+ * @param (String)  $m - Map
+ * @return (Object) $p - Player with gained exp
+ */
+function gainExp($p,$m,$e){
   global $sender;
   $p->q+=$e;
-  echo "$sender(Level: {$p->l})  slain blue slime in the forest! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
+  echo "$sender(Level: {$p->l})  slain {{enemy}} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
   if($p->q >= $p->w){
       $p->q -= $p->w;
       $p->w=round($p->w*1.1);
@@ -25,6 +31,18 @@ function gainExp($p,$e){
     }
   $p->t=time();
   return $p;
+}
+/*
+ * @param (Object)  $p - Player
+ * @param (String)  $m - Map
+ * @param (Integer) $c - Action cooldown 
+ * @param (Integer) $e - Exp reward
+ */
+function action_pve($p,$m,$c,$e){
+  global $sender;
+  $p = gainExp($p,$m,$e);
+  $p->o = $c;
+  $_STATE->{$sender} = json_encode($p);
 }
 
 // User-data:
@@ -61,9 +79,18 @@ switch ($arg[0]){
   case "pve":
     $p = json_decode($_STATE->{$sender});
     if((time()-$p->t) >= $p->o ){
-      $p = gainExp($p,7);
-      $p->o = 45;
-      $_STATE->{$sender} = json_encode($p);
+      if(isset($arg[1])){
+        switch($arg[1]){
+          case "forest":
+            action_pve($p,"forest",45,3);
+            break;
+          case "tundra":
+            action_pve($p,"tundra",60,5)
+            break;
+        }
+      } else {
+        
+      }
     }else {
       echo "Not so fast! You've to wait before you can attack again!";
       die();

@@ -1,6 +1,16 @@
 <?php
 
-
+// Check if user has all properies
+if( count((array)json_decode($_STATE->{$sender})) < 4){
+  $p = json_decode($_STATE->{$sender});
+  !isset($p->j)?$p->j=1:"";
+  !isset($p->l)?$p->l=0:"";
+  !isset($p->q)?$p->q=0:"";
+  !isset($p->w)?$p->w=10:"";
+  !isset($p->t)?$p->t=time()-60:"";
+  
+  $_STATE->{$sender} = json_encode($p);
+}
 
 function gainExp($p,$e){
   global $sender;
@@ -20,13 +30,14 @@ function gainExp($p,$e){
 // (l) => Level
 // (q) => Current Exp
 // (w) => Max Exp
-echo "TEST 0.0.16 <|> ";
+echo "TEST 0.0.17 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
       die("You've already joined the game - use reset, and then join to start a fresh game!");
     }
-    $_STATE->{$sender} = "{\"j\":1,\"l\":0,\"q\":0,\"w\":10}";
+    $t = time()-60;
+    $_STATE->{$sender} = "{\"j\":1,\"l\":0,\"q\":0,\"w\":10,\"t\":{$t}}";
     die("Welcome to tRPG!");
     break;
   case "reset":

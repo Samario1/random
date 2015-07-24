@@ -1,5 +1,10 @@
 <?php
 
+// if no arg
+if(!isset($arg[0])){
+  die('No action specified - use help to get more info!');
+}
+
 // Check if user has all properies
 if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) < 6){
   $p = json_decode($_STATE->{$sender});
@@ -65,7 +70,7 @@ function gainExp($p,$m,$e){
 // (w) => Max Exp
 // (t) => Timestamp of last action
 // (o) => Action cooldown
-echo "TEST 0.0.34 <|> ";
+echo "tRPG 0.0.35 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -113,6 +118,6 @@ switch ($arg[0]){
     die('Use [pve <biome>] to fight mobs. Use [pve] to get biomes list. Use [me] to get information about yourself.');
     break;
   default:
-    die('Invalid argument! Use help to get more info!');
+    die('Invalid action! Use help to get more info!');
 }
 ?>

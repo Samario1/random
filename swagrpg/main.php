@@ -47,7 +47,7 @@ function gainExp($p,$m,$e){
     $p->o = $c;
     $_STATE->{$sender} = json_encode($p);
   }else{
-    $c*=2
+    $c*=2;
     $p->t = time();
     $p->o = $c;
     $_STATE->{$sender} = json_encode($p);

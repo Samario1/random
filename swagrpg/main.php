@@ -106,6 +106,6 @@ switch ($arg[0]){
     die('Use [pve <biome>] to fight mobs. Use [pve] to get biomes list. Use [me] to get information about yourself.');
     break;
   default:
-    die('Invalid argument! Use help to get more info!')
+    die('Invalid argument! Use help to get more info!');
 }
 ?>

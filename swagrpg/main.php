@@ -40,6 +40,7 @@ function gainExp($p,$m,$e){
  */
 function action_pve($p,$m,$c,$e){
   global $sender;
+  global $_STATE;
   $p = gainExp($p,$m,$e);
   $p->o = $c;
   $_STATE->{$sender} = json_encode($p);
@@ -52,7 +53,7 @@ function action_pve($p,$m,$c,$e){
 // (w) => Max Exp
 // (t) => Timestamp of last action
 // (o) => Action cooldown
-echo "TEST 0.0.26 <|> ";
+echo "TEST 0.0.27 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

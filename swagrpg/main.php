@@ -71,7 +71,7 @@ switch ($q){
     }
     break;
   case "me-debug":
-    print_r($player);
+    print_r($player[0]);
     die('');
     break;
   case "me":

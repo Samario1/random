@@ -26,7 +26,8 @@ if(count($player)[0] < 4){
 
 if(!isset($q)){
   if(isset($state[$sender])){
-    die($sender.' : Level: '.$player[0]['l']);
+    print_r($_STATE->{$sender});
+    die('');
   }
   die('Welcome to swagRPG, use join to start playing!');
 }

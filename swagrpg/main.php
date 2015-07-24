@@ -53,7 +53,7 @@ function action_pve($p,$m,$c,$e){
 // (w) => Max Exp
 // (t) => Timestamp of last action
 // (o) => Action cooldown
-echo "TEST 0.0.28 <|> ";
+echo "TEST 0.0.30 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -86,6 +86,11 @@ switch ($arg[0]){
             action_pve($p,"forest",45,3);
             break;
           case "tundra":
+            if($p->l < 10){
+              $p->o = 120;
+              $_STATE->{$sender} = json_encode($p);
+              die("You've failed to farm at tundra. You will be able to attack in 2 minutes.");
+            }
             action_pve($p,"tundra",60,5);
             break;
         }

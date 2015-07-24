@@ -14,8 +14,8 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
 
 function gainExp($p,$e){
   global $sender;
-  echo "$sender(Level: {$p->l})  slain blue slime in the forest! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
   $p->q+=$e;
+  echo "$sender(Level: {$p->l})  slain blue slime in the forest! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
   if($p->q >= $p->w){
       $p->q -= $p->w;
       $p->w=round($p->w*1.1);
@@ -31,7 +31,7 @@ function gainExp($p,$e){
 // (l) => Level
 // (q) => Current Exp
 // (w) => Max Exp
-echo "TEST 0.0.23 <|> ";
+echo "TEST 0.0.24 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -49,6 +49,11 @@ switch ($arg[0]){
   case "debugme":
     echo "Length: ".count((array)json_decode($_STATE->{$sender}))."<|>";
     print_r(json_decode($_STATE->{$sender}));
+    break;
+  case "me":
+    $p = json_decode($_STATE->{$sender});
+    $t = 60-(time()-$p->t)>0?60-(time()-$p->t):0;
+    die($sender." <|> Current level: {$p->l} <|> Current exp: {$p->q} / {$p->w} <|> You'll be be able to attack in: {$t} seconds");
     break;
   case "pve":
     $p = json_decode($_STATE->{$sender});

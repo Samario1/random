@@ -18,7 +18,7 @@ function gainExp($p,$e){
 // (l) => Level
 // (q) => Current Exp
 // (w) => Max Exp
-echo "TEST 0.0.11 <|> ";
+echo "TEST 0.0.13 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -28,6 +28,7 @@ switch ($arg[0]){
     break;
   case "reset":
     $_STATE->{$sender} = "";
+    unset($_STATE->{$sender});
     break;
   case "me":
     print_r($_STATE->{$sender});

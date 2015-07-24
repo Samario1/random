@@ -1,14 +1,16 @@
 <?php
 
+
+
 function gainExp($p,$e){
   global $sender;
-  echo "$sender slain blue slime in the forest! Exp gained: $e";
+  echo "$sender(Level: {$p->l})  slain blue slime in the forest! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
   $p->q+=$e;
   if($p->q >= $p->w){
       $p->q -= $p->w;
       $p->w=round($p->w*1.1);
       $p->l++;
-      echo " | Congrulations, you've gained a level!";
+      echo " <|> Congrulations, you've gained a level! <|> Current level: {$p->l}";
     }
   return $p;
 }
@@ -18,20 +20,22 @@ function gainExp($p,$e){
 // (l) => Level
 // (q) => Current Exp
 // (w) => Max Exp
-echo "TEST 0.0.13 <|> ";
+echo "TEST 0.0.14 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
       die("You've already joined the game - use reset, and then join to start a fresh game!");
     }
     $_STATE->{$sender} = "{\"j\":1,\"l\":0,\"q\":0,\"w\":10}";
+    die("Welcome to tRPG!");
     break;
   case "reset":
     $_STATE->{$sender} = "";
     unset($_STATE->{$sender});
+    die("Your character has been deleted");
     break;
   case "me":
-    print_r($_STATE->{$sender});
+    print_r(json_decode($_STATE->{$sender}));
     break;
   case "pve":
     $p = gainExp(json_decode($_STATE->{$sender}),7);

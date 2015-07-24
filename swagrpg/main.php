@@ -34,7 +34,8 @@ switch ($arg[0]){
     unset($_STATE->{$sender});
     die("Your character has been deleted");
     break;
-  case "me":
+  case "debugme":
+    echo "Length: ".count({json_decode($_STATE->{$sender}))."<|>";
     print_r(json_decode($_STATE->{$sender}));
     break;
   case "pve":

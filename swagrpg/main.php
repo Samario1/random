@@ -19,6 +19,7 @@ switch ($arg[0]){
     if($p->q >= $p->w){
       $p->q -= $p->w;
       $p->w*=1.1;
+      $p->l++;
     }
     $_STATE->{$sender} = json_encode($p);
     break;

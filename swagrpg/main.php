@@ -22,13 +22,16 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
 function gainExp($p,$m,$e){
   global $sender;
   $p->q+=$e;
-  echo "$sender(Level: {$p->l})  slain {{enemy}} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
   if($p->q >= $p->w){
-      $p->q -= $p->w;
-      $p->w=round($p->w*1.1);
-      $p->l++;
-      echo " <|> Congrulations, you've gained a level! <|> Current level: {$p->l}";
-    }
+    $p->q -= $p->w;
+    $p->w=round($p->w*1.1);
+    $p->l++;
+    echo "$sender(Level: {$p->l})  slain {{enemy}} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
+    echo " <|> Congrulations, you've gained a level! <|> Current level: {$p->l}";
+  } else {
+    echo "$sender(Level: {$p->l})  slain {{enemy}} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
+  }
+    
   $p->t=time();
   return $p;
 }
@@ -62,7 +65,7 @@ function gainExp($p,$m,$e){
 // (w) => Max Exp
 // (t) => Timestamp of last action
 // (o) => Action cooldown
-echo "TEST 0.0.33 <|> ";
+echo "TEST 0.0.34 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

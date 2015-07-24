@@ -11,7 +11,7 @@ switch ($arg[0]){
     $_STATE->{$sender} = "[{\"j\":1,\"l\":0,\"q\":0,\"w\":10}]";
     break;
   case "me":
-    print_r(json_decode($_STATE->{$sender},true));
+    print_r($_STATE->{$sender});
     break;
   case "q1":
     $_STATE->{$sender}->q++;

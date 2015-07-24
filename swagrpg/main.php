@@ -20,7 +20,7 @@ function gainExp($p,$e){
 // (l) => Level
 // (q) => Current Exp
 // (w) => Max Exp
-echo "TEST 0.0.14 <|> ";
+echo "TEST 0.0.15 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -35,7 +35,7 @@ switch ($arg[0]){
     die("Your character has been deleted");
     break;
   case "debugme":
-    echo "Length: ".count({json_decode($_STATE->{$sender}))."<|>";
+    echo "Length: ".count(json_decode($_STATE->{$sender}))."<|>";
     print_r(json_decode($_STATE->{$sender}));
     break;
   case "pve":

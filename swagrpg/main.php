@@ -52,7 +52,7 @@ function action_pve($p,$m,$c,$e){
 // (w) => Max Exp
 // (t) => Timestamp of last action
 // (o) => Action cooldown
-echo "TEST 0.0.25 <|> ";
+echo "TEST 0.0.26 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -85,11 +85,11 @@ switch ($arg[0]){
             action_pve($p,"forest",45,3);
             break;
           case "tundra":
-            action_pve($p,"tundra",60,5)
+            action_pve($p,"tundra",60,5);
             break;
         }
       } else {
-        
+        die("You've to specify biome! <|> Currently generated: forest, tundra");
       }
     }else {
       echo "Not so fast! You've to wait before you can attack again!";

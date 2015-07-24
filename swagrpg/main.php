@@ -5,7 +5,7 @@
 // (l) => Level
 // (q) => Current Exp
 // (w) => Max Exp
-echo "TEST 0.0.04 <|> ";
+echo "TEST 0.0.05 <|> ";
 switch ($arg[0]){
   case "join":
     $_STATE->{$sender} = "[{\"j\":1,\"l\":0,\"q\":0,\"w\":10}]";
@@ -14,11 +14,13 @@ switch ($arg[0]){
     print_r($_STATE->{$sender});
     break;
   case "q1":
-    $_STATE->{$sender}->q++;
-    if($_STATE->{$sender}->q >= $_STATE->{$sender}->w){
-      $_STATE->{$sender}->q -= $_STATE->{$sender}->w;
-      $_STATE->{$sender}->w*=1.1;
+    $p = json_decode($_STATE->{$sender})[0];
+    $p->q++;
+    if($p->q >= $p->w){
+      $p->q -= $p->w;
+      $p->w*=1.1;
     }
+    $_STATE->{$sender} = json_encode($p);
     break;
 }
 ?>

@@ -13,11 +13,11 @@ function gainExp($p,$e){
 }
 
 $state = (array)$_STATE;
-$player = isset($state[$sender])?json_decode($state[$sender],true):array();
+$player = isset($state[$sender])?json_decode($state[$sender],true):array(array());
 $q = isset($arg[0])?$arg[0]:"";
 $w = isset($arg[1])?$arg[1]:"";
 
-if(count($player) < 4){
+if(count($player)[0] < 4){
   isset($player[0]['j'])?$player[0]['j']=1:''; // joined
   isset($player[0]['l'])?$player[0]['l']=0:''; // level
   isset($player[0]['q'])?$player[0]['q']=0:''; // currentExp
@@ -26,7 +26,7 @@ if(count($player) < 4){
 
 if(!isset($q)){
   if(isset($state[$sender])){
-    die($sender.' : Level: 0');
+    die($sender.' : Level: '.$player[0]['l']);
   }
   die('Welcome to swagRPG, use join to start playing!');
 }

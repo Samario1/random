@@ -1,7 +1,7 @@
 <?php
 
 // Check if user has all properies
-if( count((array)json_decode($_STATE->{$sender})) < 5){
+if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) < 5){
   $p = json_decode($_STATE->{$sender});
   !isset($p->j)?$p->j=1:"";
   !isset($p->l)?$p->l=0:"";
@@ -31,7 +31,7 @@ function gainExp($p,$e){
 // (l) => Level
 // (q) => Current Exp
 // (w) => Max Exp
-echo "TEST 0.0.20 <|> ";
+echo "TEST 0.0.21 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

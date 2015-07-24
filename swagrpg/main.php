@@ -30,7 +30,7 @@ function gainExp($p,$e){
 // (l) => Level
 // (q) => Current Exp
 // (w) => Max Exp
-echo "TEST 0.0.18 <|> ";
+echo "TEST 0.0.19 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -50,7 +50,11 @@ switch ($arg[0]){
     print_r(json_decode($_STATE->{$sender}));
     break;
   case "pve":
-    $p = gainExp(json_decode($_STATE->{$sender}),7);
+    $p = json_decode($_STATE->{$sender});
+    if($p->t+60 < time()){
+      echo "Not so fast! You've to wait before you can attack again!";
+    }
+    $p = gainExp($p,7);
     $_STATE->{$sender} = json_encode($p);
     break;
 }

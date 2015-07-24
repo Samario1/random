@@ -1,6 +1,7 @@
 <?php
 
 function gainExp($p,$e){
+  global $sender;
   echo "$sender slain blue slime in the forest! Exp gained: $e";
   $p->q+=$e;
   if($p->q >= $p->w){

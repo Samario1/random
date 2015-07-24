@@ -35,29 +35,24 @@ function gainExp($p,$m,$e){
 /*
  * @param (Object)  $p - Player
  * @param (String)  $m - Map
+ * @param (Integer) $l - Level required to pass the level
  * @param (Integer) $c - Action cooldown 
  * @param (Integer) $e - Exp reward
  */
- function action_pve($p,$m,$c,$e){
+ function action_pve($p,$m,$l,$c,$e){
   global $sender;
   global $_STATE;
-  $p = gainExp($p,$m,$e);
-  $p->o = $c;
-  $_STATE->{$sender} = json_encode($p);
-}
-/*
- * @param (Object)  $p - Player
- * @param (String)  $m - Map
- * @param (Integer) $c - Action cooldown 
- * @param (Integer) $e - Exp reward
- */
-function pve_fail($p,$m,$c){
-  global $sender;
-  global $_STATE;
-  $p->t = time();
-  $p->o = $c;
-  $_STATE->{$sender} = json_encode($p);
-  die("You've failed to farm at $m. You will be able to attack in $c seconds.");
+  if($p->l >= $l){
+    $p = gainExp($p,$m,$e);
+    $p->o = $c;
+    $_STATE->{$sender} = json_encode($p);
+  }else{
+    $c*=2
+    $p->t = time();
+    $p->o = $c;
+    $_STATE->{$sender} = json_encode($p);
+    die("You've failed to farm at $m. You will be able to attack in $c seconds.");
+  }
 }
 
 // User-data:
@@ -67,7 +62,7 @@ function pve_fail($p,$m,$c){
 // (w) => Max Exp
 // (t) => Timestamp of last action
 // (o) => Action cooldown
-echo "TEST 0.0.32 <|> ";
+echo "TEST 0.0.33 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -97,13 +92,10 @@ switch ($arg[0]){
       if(isset($arg[1])){
         switch($arg[1]){
           case "forest":
-            action_pve($p,"forest",45,3);
+            action_pve($p,"forest",0,45,3);
             break;
           case "tundra":
-            if($p->l < 10){
-              pve_fail($p,"tundra",120);
-            }
-            action_pve($p,"tundra",60,5);
+            action_pve($p,"tundra",10,60,5);
             break;
         }
       } else {

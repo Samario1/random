@@ -59,7 +59,6 @@ switch ($arg[0]){
       echo "Not so fast! You've to wait before you can attack again!";
       die();
     }
-
     break;
 }
 ?>

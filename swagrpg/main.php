@@ -199,9 +199,9 @@ switch ($arg[0]){
     $p->o=45; // Rest time
     $p->m=0; // Money
     $p->i=new SplFixedArray(32);   // Inventory
-    $p->i[0] = 0;
-    $p->i[1] = 1;
-    $p->i[2] = 2;
+    $p->i->{0} = 0;
+    $p->i->{1} = 1;
+    $p->i->{2} = 2;
     $_STATE->{$sender} = json_encode($p);
     die("Welcome to tRPG!");
     break;
@@ -247,9 +247,9 @@ switch ($arg[0]){
     break;
   case "noob-kit":
     $p = json_decode($_STATE->{$sender});
-    $p->i[0]==0;
-    $p->i[1]==1;
-    $p->i[2]==2;
+    $p->i->{0}=0;
+    $p->i->{1}=1;
+    $p->i->{2}=2;
     $_STATE->{$sender} = json_encode($p);
     die('');
   default:

@@ -126,7 +126,7 @@ switch ($arg[0]){
         action_pve($p,$arg[1]);
         break;
       } else {
-        die("Biome does't exist! <|> Choose one of these: ".implode(",",$BIOMES));
+        die("Biome does't exist! <|>");
       }
     }else {
       echo "Not so fast! You've to wait before you can attack again!";

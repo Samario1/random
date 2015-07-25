@@ -66,7 +66,7 @@ function money_parse($m){
 function gainExp($p,$m,$b,$e){
   global $sender;
   $p->q+=$e;
-  $enm = $b['m']['mobs'][array_rand($b['m']['mobs'])];
+  $enm = $b[$m]['mobs'][array_rand($b[$m]['mobs'])];
   if($p->q >= $p->w){
     $p->q -= $p->w;
     $p->w=round($p->w*1.1);

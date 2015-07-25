@@ -78,7 +78,7 @@ function gainExp($p,$m,$e){
     $p = gainExp($p,$b,$cb["exp"]);
     $p->o = $cb["rest"];
     $mn = rand($cb["gold_min"],$cb["gold_max"]);
-    $p->m += mn;
+    $p->m += $mn;
     echo("Money gained: $mn <|> Current ammount: ".$p->m); // TODO: Make money parse into NpNgNsNc format.
     $_STATE->{$sender} = json_encode($p);
   }else{
@@ -98,7 +98,7 @@ function gainExp($p,$m,$e){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "tRPG 0.0.39 <|> ";
+echo "tRPG 0.0.40 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

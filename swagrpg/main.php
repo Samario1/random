@@ -70,7 +70,7 @@ if(!isset($arg[0])){
 }
 
 // Check if user has all properies
-if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) < 7){
+if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) < 8){
   $p = json_decode($_STATE->{$sender});
   !isset($p->j)?$p->j=1:"";
   !isset($p->l)?$p->l=0:"";
@@ -79,6 +79,7 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
   !isset($p->t)?$p->t=time()-45:"";
   !isset($p->o)?$p->o=45:"";
   !isset($p->m)?$p->m=0:"";
+  !isset($p->i)?$p->i=new SplFixedArray(32):"";
   
   $_STATE->{$sender} = json_encode($p);
 }
@@ -173,14 +174,6 @@ function gainExp($p,$m,$b,$e,$n){
   }
 }
 
-// User-data:
-// (j) => Joined
-// (l) => Level
-// (q) => Current Exp
-// (w) => Max Exp
-// (t) => Timestamp of last action
-// (o) => Action cooldown
-// (m) => Money
 echo "swagRPG 0.0.49 <|> ";
 switch ($arg[0]){
   case "join":
@@ -188,7 +181,16 @@ switch ($arg[0]){
       die("You've already joined the game - use reset, and then join to start a fresh game!");
     }
     $t = time()-45;
-    $_STATE->{$sender} = "{\"j\":1,\"l\":0,\"q\":0,\"w\":10,\"t\":{$t},\"o\":45,\"m\":0}";
+    $p = json_decode("{}");
+    $p->j=1; // Joined
+    $p->l=0; // Level
+    $p->q=0; // Current exp
+    $p->w=10; // Exp to level up
+    $p->t=time()-45; // Last action
+    $p->o=45; // Rest time
+    $p->m=0; // Money
+    $p->i=new SplFixedArray(32);   // Inventory
+    $_STATE->{$sender} = json_encode($p);
     die("Welcome to tRPG!");
     break;
   case "reset":

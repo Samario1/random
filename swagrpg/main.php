@@ -24,7 +24,7 @@ $BIOMES = array(
       "gold_max" => 210,
       "rest" => 75,
       "mobs" => array("Antlion","Sand Slime","Vulture")
-    )
+    ),
     "volcano" => array(
       "lvl" => 11,
       "exp" => 13,

@@ -7,7 +7,10 @@ $BIOMES = array(
     "gold_min" => 35,
     "gold_max" => 150,
     "rest" => 45,
-    "mobs" => array("Blue Slime","Green Slime")
+    "mobs"=> array(
+      "day"   => array("Blue Slime","Green Slime"),
+      "night" => array("Zombie","Demon Eye")
+    )
   ),
   "tundra" => array(
     "lvl" => 4,
@@ -15,7 +18,10 @@ $BIOMES = array(
     "gold_min" => 50,
     "gold_max" => 160,
     "rest" => 60,
-    "mobs" => array("Ice Slime")
+    "mobs"=> array(
+      "day"   => array("Ice Slime","Green Slime"),
+      "night" => array("Zombie Eskimo")
+    )
   ),
   "desert" => array(
     "lvl" => 7,
@@ -23,7 +29,10 @@ $BIOMES = array(
     "gold_min" => 75,
     "gold_max" => 210,
     "rest" => 75,
-    "mobs" => array("Antlion","Sand Slime","Vulture")
+    "mobs"=> array(
+      "day"   => array("Antlion","Antlion Swarmer","Antlion Charger","Sand Slime","Vulture"),
+      "night" => array("Antlion","Antlion Swarmer","Antlion Charger","Sand Slime","Vulture")
+    )
   ),
   "volcano" => array(
     "lvl" => 11,
@@ -31,7 +40,10 @@ $BIOMES = array(
     "gold_min" => 100,
     "gold_max" => 260,
     "rest" => 90,
-    "mobs" => array("Hellbat","Lava Slime","Granite Elemental")
+    "mobs" => array(
+      "day"   => array("Hellbat","Lava Slime","Granite Elemental"),
+      "night" =>  array("Hellbat","Lava Slime","Granite Elemental")
+    )
   )
   );
 
@@ -75,7 +87,7 @@ function game_time(){
   return array(
       "H" => sprintf('%.00F',(time()%1440)/60),
       "M" => sprintf('%.00F',time()%60),
-      "F" => sprintf('%.00F',(time()%1440)/60).":".sprintf('%.00F',time()%60)
+      "F" => sprintf("%02d",(time()%1440)/60).":".sprintf("%02d",time()%60)
     );
 }
 /*
@@ -83,12 +95,13 @@ function game_time(){
  * @param (Integer) $e - Exp 
  * @param (String)  $m - Map
  * @param (Array)   $b - Biome
+ * @param (Boolean) $n - Night
  * @return (Object) $p - Player with gained exp
  */
-function gainExp($p,$m,$b,$e){
+function gainExp($p,$m,$b,$e,$n){
   global $sender;
-  $p->q+=$e;
-  $enm = $b['mobs'][array_rand($b['mobs'])];
+  $p->q+=$e*($n?1.5:1);
+  $enm = $b['mobs'][$n?"night":"day"][array_rand($b['mobs'])];
   $enm = (in_array($enm[0],array('a','e','i','o','u'))?"an ":"a ").$enm;
   $m = ucfirst($m);
   if($p->q >= $p->w){
@@ -112,12 +125,18 @@ function gainExp($p,$m,$b,$e){
   global $sender;
   global $_STATE;
   global $BIOMES;
+  $time = game_time();
+  if( floatval(str_replace(":",".",time["F"])) > 19.3 ){
+    $is_night = true;
+  }else{
+    $is_night = false;
+  }
   $cb = $BIOMES[$b];
   if($p->l >= $cb["lvl"]){
-    $p = gainExp($p,$b,$cb,$cb["exp"]);
+    $p = gainExp($p,$b,$cb,$cb["exp"],$is_night);
     $p->o = $cb["rest"];
     $mn = rand($cb["gold_min"],$cb["gold_max"]);
-    $p->m += $mn;
+    $p->m += $mn*($is_night?1.5:1);
     echo(" <|> Money gained: ".money_parse($mn)." <|> Current ammount: ".money_parse($p->m)); // TODO: Make money parse into NpNgNsNc format.
     $_STATE->{$sender} = json_encode($p);
   }else{
@@ -137,7 +156,7 @@ function gainExp($p,$m,$b,$e){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "tRPG 0.0.45 <|> ";
+echo "swagRPG 0.0.46 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

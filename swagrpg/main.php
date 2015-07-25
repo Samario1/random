@@ -42,7 +42,17 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
   
   $_STATE->{$sender} = json_encode($p);
 }
+function money_parse($m){
+  $c =  $m%100;
+  $m -= $c;
+  $s =  floor($m/100)%100;
+  $m -= $s*100;
+  $g =  floor($m/10000)%100;
+  $m -= $g*10000;
+  $p =  floor($m/1000000)%100;
 
+  return ($p>0?$p+" Plat. ":"").($g>0?$g." Gold ":"").($s>0?$s." Silver ":"").$c." Copper";
+}
 /*
  * @param (Object)  $p - Player
  * @param (Integer) $e - Exp 
@@ -79,7 +89,7 @@ function gainExp($p,$m,$e){
     $p->o = $cb["rest"];
     $mn = rand($cb["gold_min"],$cb["gold_max"]);
     $p->m += $mn;
-    echo("Money gained: $mn <|> Current ammount: ".$p->m); // TODO: Make money parse into NpNgNsNc format.
+    echo("<|> Money gained: ".money_parse($mn)." <|> Current ammount: ".money_parse($p->m)); // TODO: Make money parse into NpNgNsNc format.
     $_STATE->{$sender} = json_encode($p);
   }else{
     $c=$cb["rest"]*2;
@@ -120,7 +130,7 @@ switch ($arg[0]){
   case "me":
     $p = json_decode($_STATE->{$sender});
     $t = $p->o-(time()-$p->t)>0?$p->o-(time()-$p->t):0;
-    die($sender." <|> Current level: {$p->l} <|> Current exp: {$p->q} / {$p->w} <|> Current money: {$p->m} <|> You'll be be able to attack in: {$t} seconds");
+    die($sender." <|> Current level: {$p->l} <|> Current exp: {$p->q} / {$p->w} <|> Current money: ".money_parse($p->m)." <|> You'll be be able to attack in: {$t} seconds");
     break;
   case "pve":
     $p = json_decode($_STATE->{$sender});

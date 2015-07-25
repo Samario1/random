@@ -98,7 +98,7 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
   !isset($p->t)?$p->t=time()-45:"";
   !isset($p->o)?$p->o=45:"";
   !isset($p->m)?$p->m=0:"";
-  !isset($p->i)?$p->i=new SplFixedArray(32):"";
+  !isset($p->i)?$p->i=array("axe"=>0,"pickaxe"=>0,"sword"=>0,"armor"=>0):"";
   
   $_STATE->{$sender} = json_encode($p);
 }
@@ -208,7 +208,7 @@ switch ($arg[0]){
     $p->t=time()-45; // Last action
     $p->o=45; // Rest time
     $p->m=0; // Money
-    $p->i=new SplFixedArray(32);   // Inventory
+    $p->i=array("axe"=>0,"pickaxe"=>0,"sword"=>0,"armor"=>0);   // Inventory
     $_STATE->{$sender} = json_encode($p);
     die("Welcome to tRPG!");
     break;
@@ -242,6 +242,11 @@ switch ($arg[0]){
     break;
   case "explore":
     die("You are not yet ready to explore!");
+    break;
+  case "fix-inv":
+    $p = json_decode($_STATE->{$sender});
+    $p->i=array("axe"=>0,"pickaxe"=>0,"sword"=>0,"armor"=>0);
+    $_STATE->{$sender} = json_encode($p);
     break;
   case "notes":
     die("Coming soon: [mine] - you will be able to go mine various ores,stones - don't expect todo anything with them yet!");

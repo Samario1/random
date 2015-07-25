@@ -117,6 +117,7 @@ function game_time(){
  */
 function gainExp($p,$m,$b,$e,$n){
   global $sender;
+  global $MOBS;
   $p->q+=round($e*($n?2:1));
   $enm = $MOBS[$b['mobs'][$n?"night":"day"][array_rand($b['mobs'][$n?"night":"day"])]];
   $enm = (in_array($enm[0],array('A','E','I','O','U'))?"an ":"a ").$enm;
@@ -142,7 +143,6 @@ function gainExp($p,$m,$b,$e,$n){
   global $sender;
   global $_STATE;
   global $BIOMES;
-  global $MOBS;
   $time = game_time();
   if( floatval(str_replace(":",".",$time["F"])) > 19.3 or floatval(str_replace(":",".",$time["F"])) < 4.3 ){
     $is_night = true;

@@ -19,7 +19,7 @@ $BIOMES = array(
     "gold_max" => 160,
     "rest" => 60,
     "mobs"=> array(
-      "day"   => array("Ice Slime","Green Slime"),
+      "day"   => array("Ice Slime"),
       "night" => array("Zombie Eskimo")
     )
   ),

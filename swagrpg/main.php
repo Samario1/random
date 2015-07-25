@@ -1,5 +1,22 @@
 <?php
 
+$MOBS = array(
+  0 =>  array("name" => "Blue Slime"),
+  1 =>  array("name" => "Green Slime"),
+  2 =>  array("name" => "Ice Slime"),
+  3 =>  array("name" => "Sand Slime"),
+  4 =>  array("name" => "Lava Slime")
+  5 =>  array("name" => "Antlion"),
+  6 =>  array("name" => "Antlion Charger"),
+  7 =>  array("name" => "Antlion Swarmer"),
+  8 =>  array("name" => "Vulture"),
+  9 =>  array("name" => "Zombie"),
+  10 => array("name" => "Zombie Eskimo"),
+  11 => array("name" => "Demon Eye"),
+  12 => array("name" => "Hellbat"),
+  13 => array("name" => "Granite Elemental")
+);
+
 $BIOMES = array(
   "forest" => array(
     "lvl" => 0,
@@ -8,8 +25,8 @@ $BIOMES = array(
     "gold_max" => 150,
     "rest" => 45,
     "mobs"=> array(
-      "day"   => array("Blue Slime","Green Slime"),
-      "night" => array("Zombie","Demon Eye")
+      "day"   => array(0,1),
+      "night" => array(9,11)
     )
   ),
   "tundra" => array(
@@ -19,8 +36,8 @@ $BIOMES = array(
     "gold_max" => 160,
     "rest" => 60,
     "mobs"=> array(
-      "day"   => array("Ice Slime"),
-      "night" => array("Zombie Eskimo")
+      "day"   => array(2),
+      "night" => array(10)
     )
   ),
   "desert" => array(
@@ -30,8 +47,8 @@ $BIOMES = array(
     "gold_max" => 210,
     "rest" => 75,
     "mobs"=> array(
-      "day"   => array("Antlion","Antlion Swarmer","Antlion Charger","Sand Slime","Vulture"),
-      "night" => array("Antlion","Antlion Swarmer","Antlion Charger","Sand Slime","Vulture")
+      "day"   => array(3,5,6,7,8),
+      "night" => array(3,5,6,7,8)
     )
   ),
   "volcano" => array(
@@ -41,8 +58,8 @@ $BIOMES = array(
     "gold_max" => 260,
     "rest" => 90,
     "mobs" => array(
-      "day"   => array("Hellbat","Lava Slime","Granite Elemental"),
-      "night" =>  array("Hellbat","Lava Slime","Granite Elemental")
+      "day"   => array(4,12,13),
+      "night" =>  array(4,12,13)
     )
   )
   );
@@ -101,7 +118,7 @@ function game_time(){
 function gainExp($p,$m,$b,$e,$n){
   global $sender;
   $p->q+=round($e*($n?2:1));
-  $enm = $b['mobs'][$n?"night":"day"][array_rand($b['mobs'][$n?"night":"day"])];
+  $enm = $MOBS[$b['mobs'][$n?"night":"day"][array_rand($b['mobs'][$n?"night":"day"])]];
   $enm = (in_array($enm[0],array('A','E','I','O','U'))?"an ":"a ").$enm;
   $m = ucfirst($m);
   if($p->q >= $p->w){
@@ -156,7 +173,7 @@ function gainExp($p,$m,$b,$e,$n){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "swagRPG 0.0.47 <|> ";
+echo "swagRPG 0.0.49 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

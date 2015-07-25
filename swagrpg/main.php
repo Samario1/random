@@ -1,6 +1,5 @@
 <?php
 
-global $MOBS;
 $MOBS = array(
   0 =>  array("name" => "Blue Slime"),
   1 =>  array("name" => "Green Slime"),
@@ -18,7 +17,6 @@ $MOBS = array(
   13 => array("name" => "Granite Elemental")
 );
 
-global $BIOMES;
 $BIOMES = array(
   "forest" => array(
     "lvl" => 0,
@@ -119,7 +117,7 @@ function game_time(){
  */
 function gainExp($p,$m,$b,$e,$n){
   global $sender;
-  //global $MOBS;
+  global $MOBS;
   $p->q+=round($e*($n?2:1));
   $enm = $MOBS[$b['mobs'][$n?"night":"day"][array_rand($b['mobs'][$n?"night":"day"])]];
   $enm["name"] = (in_array($enm["name"][0],array('A','E','I','O','U'))?"an ":"a ").$enm["name"];
@@ -144,7 +142,7 @@ function gainExp($p,$m,$b,$e,$n){
  function action_pve($p,$b){
   global $sender;
   global $_STATE;
-  //global $BIOMES;
+  global $BIOMES;
   $time = game_time();
   if( floatval(str_replace(":",".",$time["F"])) > 19.3 or floatval(str_replace(":",".",$time["F"])) < 4.3 ){
     $is_night = true;

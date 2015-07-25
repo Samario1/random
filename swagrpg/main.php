@@ -100,8 +100,8 @@ function game_time(){
  */
 function gainExp($p,$m,$b,$e,$n){
   global $sender;
-  $p->q+=$e*($n?1.5:1);
-  $enm = $b['mobs'][$n?"night":"day"][array_rand($b['mobs'])];
+  $p->q+=round($e*($n?2:1));
+  $enm = $b['mobs'][$n?"night":"day"][array_rand($b['mobs'][$n?"night":"day"])];
   $enm = (in_array($enm[0],array('a','e','i','o','u'))?"an ":"a ").$enm;
   $m = ucfirst($m);
   if($p->q >= $p->w){
@@ -136,7 +136,7 @@ function gainExp($p,$m,$b,$e,$n){
     $p = gainExp($p,$b,$cb,$cb["exp"],$is_night);
     $p->o = $cb["rest"];
     $mn = rand($cb["gold_min"],$cb["gold_max"]);
-    $p->m += $mn*($is_night?1.5:1);
+    $p->m += $mn*($is_night?2:1);
     echo(" <|> Money gained: ".money_parse($mn)." <|> Current ammount: ".money_parse($p->m)); // TODO: Make money parse into NpNgNsNc format.
     $_STATE->{$sender} = json_encode($p);
   }else{
@@ -156,7 +156,7 @@ function gainExp($p,$m,$b,$e,$n){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "swagRPG 0.0.46 <|> ";
+echo "swagRPG 0.0.47 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

@@ -95,7 +95,7 @@ function gainExp($p,$m,$e){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "tRPG 0.0.37 <|> ";
+echo "tRPG 0.0.38 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -122,7 +122,7 @@ switch ($arg[0]){
   case "pve":
     $p = json_decode($_STATE->{$sender});
     if((time()-$p->t) >= $p->o ){
-      if(isset($arg[1]) and in_array($arg[1], $BIOMES)){
+      if(isset($arg[1]) and array_key_exists($arg[1], $BIOMES)){
         action_pve($p,$arg[1]);
         break;
       } else {

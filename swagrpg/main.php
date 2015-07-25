@@ -190,7 +190,7 @@ switch ($arg[0]){
         die("Biome doesn't exist! <|> You can go here instead: forest,desert or tundra");
       }
     }else {
-      echo "Not so fast! You've to wait before you can attack again!";
+      echo "Not so fast! You've got to wait before you can attack again!";
       die();
     }
     break;

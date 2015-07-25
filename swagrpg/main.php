@@ -15,7 +15,7 @@ $BIOMES = array(
       "gold_min" => 50,
       "gold_max" => 160,
       "rest" => 60,
-      "mobs" = > array("Ice Slime")
+      "mobs" => array("Ice Slime")
     ),
   "desert" => array(
       "lvl" => 7,
@@ -23,7 +23,7 @@ $BIOMES = array(
       "gold_min" => 75,
       "gold_max" => 210,
       "rest" => 75,
-      "mobs" = > array("Antlion","Sand Slime","Vulture")
+      "mobs" => array("Antlion","Sand Slime","Vulture")
     )
   );
 

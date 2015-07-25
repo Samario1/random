@@ -75,6 +75,7 @@ function gainExp($p,$m,$b,$e){
   global $sender;
   $p->q+=$e;
   $enm = $b['mobs'][array_rand($b['mobs'])];
+  $enm = (in_array($enm[0],array('a','e','i','o','u'))?"an ":"a ").$enm;
   if($p->q >= $p->w){
     $p->q -= $p->w;
     $p->w=round($p->w*1.1);

@@ -1,12 +1,22 @@
 <?php
 
-$ITEMS = array(
-  0 => array("name" => "Wooden Axe", "type" => "axe", "power" => 1, "value" => 50),
-  1 => array("name" => "Wooden Sword", "type" => "sword", "power" => 5, "value" => 50),
-  2 => array("name" => "Wooden Pickaxe", "type" => "pickaxe", "power" => 1, "value" => 50),
-  3 => array("name" => "Stone", "type" => "block", "value" => 0),
-  4 => array("name" => "Wood", "type" => "block", "value" => 0),
-  5 => array("name" => "Gel", "type" => "material", "value" => 1)
+$MATERIALS = array(
+  0  => array("name" => "wood", "count" => 0),  
+  1  => array("name" => "stone", "count" => 0),
+  2  => array("name" => "copper", "count" => 0),
+  3  => array("name" => "lead", "count" => 0),
+  4  => array("name" => "tungsten", "count" => 0),
+  5  => array("name" => "platinum", "count" => 0),
+  6  => array("name" => "crimtane", "count" => 0),
+  7  => array("name" => "meteorite", "count" => 0),
+  8  => array("name" => "obsidian", "count" => 0),
+  9  => array("name" => "hellstone", "count" => 0),
+  10 => array("name" => "demonite", "count" => 0),
+  11 => array("name" => "cobalt", "count" => 0),
+  12 => array("name" => "orichalcum", "count" => 0),
+  13 => array("name" => "adamantite", "count" => 0),
+  14 => array("name" => "chlorophyte", "count" => 0),
+  15 => array("name" => "luminite", "count" => 0)
 );
 
 $MOBS = array(
@@ -183,7 +193,7 @@ function gainExp($p,$m,$b,$e,$n){
   }
 }
 
-echo "swagRPG 0.0.50 <|> ";
+echo "swagRPG 0.0.51 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -199,9 +209,6 @@ switch ($arg[0]){
     $p->o=45; // Rest time
     $p->m=0; // Money
     $p->i=new SplFixedArray(32);   // Inventory
-    $p->i->{0} = 0;
-    $p->i->{1} = 1;
-    $p->i->{2} = 2;
     $_STATE->{$sender} = json_encode($p);
     die("Welcome to tRPG!");
     break;
@@ -245,13 +252,6 @@ switch ($arg[0]){
   case "help":
     die('Use [pve <biome>] to fight mobs. Use [pve] to get biomes list. Use [me] to get information about yourself. Use [info] to get more info!');
     break;
-  case "noob-kit":
-    $p = json_decode($_STATE->{$sender});
-    $p->i->{0}=0;
-    $p->i->{1}=1;
-    $p->i->{2}=2;
-    $_STATE->{$sender} = json_encode($p);
-    die('');
   default:
     die('Invalid action! Use help to get more info!');
 }

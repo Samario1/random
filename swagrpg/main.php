@@ -25,6 +25,14 @@ $BIOMES = array(
       "rest" => 75,
       "mobs" => array("Antlion","Sand Slime","Vulture")
     )
+    "volcano" => array(
+      "lvl" => 11,
+      "exp" => 13,
+      "gold_min" => 100,
+      "gold_max" => 260,
+      "rest" => 90,
+      "mobs" => array("Hellbat","Lava Slime","Granite Elemental")
+    )
   );
 
 // if no arg

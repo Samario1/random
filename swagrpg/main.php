@@ -11,13 +11,29 @@ $MATERIALS = array(
   7  => array("name" => "meteorite", "count" => 0),
   8  => array("name" => "obsidian", "count" => 0),
   9  => array("name" => "hellstone", "count" => 0),
-  10 => array("name" => "demonite", "count" => 0),
-  11 => array("name" => "cobalt", "count" => 0),
-  12 => array("name" => "orichalcum", "count" => 0),
-  13 => array("name" => "adamantite", "count" => 0),
-  14 => array("name" => "chlorophyte", "count" => 0),
-  15 => array("name" => "luminite", "count" => 0)
+  10 => array("name" => "cobalt", "count" => 0),
+  11 => array("name" => "orichalcum", "count" => 0),
+  12 => array("name" => "adamantite", "count" => 0),
+  13 => array("name" => "chlorophyte", "count" => 0),
+  14 => array("name" => "luminite", "count" => 0)
 );
+
+$TOOLS = array(
+  0  => array("tier" => "Wooden", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  1  => array("tier" => "Copper", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  2  => array("tier" => "Lead", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  3  => array("tier" => "Tungsten", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  4  => array("tier" => "Platinum", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  5  => array("tier" => "Crimtane", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  6  => array("tier" => "Meteorite", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  7  => array("tier" => "Obsidian", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  8  => array("tier" => "Hellstone", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  9  => array("tier" => "Cobalt", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  10 => array("tier" => "Orichalcum", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  11 => array("tier" => "Adamantite", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  12 => array("tier" => "Chlorophyte", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  13 => array("tier" => "Luminite", "pickaxe" => array(), "axe" => array(),"sword" => array()),
+  );
 
 $MOBS = array(
   0 =>  array("name" => "Blue Slime"),

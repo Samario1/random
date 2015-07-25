@@ -80,6 +80,7 @@ function gainExp($p,$m,$b,$e){
     $p->q -= $p->w;
     $p->w=round($p->w*1.1);
     $p->l++;
+    $m = ucfirst($m);
     echo "$sender(Level: {$p->l}) slain $enm in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
     echo " <|> Congrulations, you've gained a level! <|> Current level: {$p->l}";
   } else {

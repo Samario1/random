@@ -142,6 +142,7 @@ function gainExp($p,$m,$b,$e,$n){
   global $sender;
   global $_STATE;
   global $BIOMES;
+  global $MOBS;
   $time = game_time();
   if( floatval(str_replace(":",".",$time["F"])) > 19.3 or floatval(str_replace(":",".",$time["F"])) < 4.3 ){
     $is_night = true;

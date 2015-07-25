@@ -2,37 +2,37 @@
 
 $BIOMES = array(
   "forest" => array(
-      "lvl" => 0,
-      "exp" => 5,
-      "gold_min" => 35,
-      "gold_max" => 150,
-      "rest" => 45,
-      "mobs" => array("Blue Slime","Green Slime")
-    ),
+    "lvl" => 0,
+    "exp" => 5,
+    "gold_min" => 35,
+    "gold_max" => 150,
+    "rest" => 45,
+    "mobs" => array("Blue Slime","Green Slime")
+  ),
   "tundra" => array(
-      "lvl" => 4,
-      "exp" => 7,
-      "gold_min" => 50,
-      "gold_max" => 160,
-      "rest" => 60,
-      "mobs" => array("Ice Slime")
-    ),
+    "lvl" => 4,
+    "exp" => 7,
+    "gold_min" => 50,
+    "gold_max" => 160,
+    "rest" => 60,
+    "mobs" => array("Ice Slime")
+  ),
   "desert" => array(
-      "lvl" => 7,
-      "exp" => 10,
-      "gold_min" => 75,
-      "gold_max" => 210,
-      "rest" => 75,
-      "mobs" => array("Antlion","Sand Slime","Vulture")
-    ),
-    "volcano" => array(
-      "lvl" => 11,
-      "exp" => 13,
-      "gold_min" => 100,
-      "gold_max" => 260,
-      "rest" => 90,
-      "mobs" => array("Hellbat","Lava Slime","Granite Elemental")
-    )
+    "lvl" => 7,
+    "exp" => 10,
+    "gold_min" => 75,
+    "gold_max" => 210,
+    "rest" => 75,
+    "mobs" => array("Antlion","Sand Slime","Vulture")
+  ),
+  "volcano" => array(
+    "lvl" => 11,
+    "exp" => 13,
+    "gold_min" => 100,
+    "gold_max" => 260,
+    "rest" => 90,
+    "mobs" => array("Hellbat","Lava Slime","Granite Elemental")
+  )
   );
 
 // if no arg
@@ -76,11 +76,11 @@ function gainExp($p,$m,$b,$e){
   $p->q+=$e;
   $enm = $b['mobs'][array_rand($b['mobs'])];
   $enm = (in_array($enm[0],array('a','e','i','o','u'))?"an ":"a ").$enm;
+  $m = ucfirst($m);
   if($p->q >= $p->w){
     $p->q -= $p->w;
     $p->w=round($p->w*1.1);
     $p->l++;
-    $m = ucfirst($m);
     echo "$sender(Level: {$p->l}) slain $enm in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
     echo " <|> Congrulations, you've gained a level! <|> Current level: {$p->l}";
   } else {

@@ -139,15 +139,18 @@ switch ($arg[0]){
         action_pve($p,$arg[1]);
         break;
       } else {
-        die("Biome does't exist! <|>");
+        die("Biome does't exist! <|> You can go here instead: forest,desert or tundra");
       }
     }else {
       echo "Not so fast! You've to wait before you can attack again!";
       die();
     }
     break;
+  case "info":
+    die("Coming soon: [mine] - you will be able to go mine various ores,stones - don't expect todo anything with them yet!");
+    break;
   case "help":
-    die('Use [pve <biome>] to fight mobs. Use [pve] to get biomes list. Use [me] to get information about yourself.');
+    die('Use [pve <biome>] to fight mobs. Use [pve] to get biomes list. Use [me] to get information about yourself. Use [info] to get more info!');
     break;
   default:
     die('Invalid action! Use help to get more info!');

@@ -1,12 +1,36 @@
 <?php
 
+$BIOMES = array(
+  "forest" => array(
+      "lvl" => 0,
+      "exp" => 5,
+      "gold_min" => 35,
+      "gold_max" => 150,
+      "rest" => 45
+    ),
+  "desert" => array(
+      "lvl" => 4,
+      "exp" => 7,
+      "gold_min" => 50,
+      "gold_max" => 160,
+      "rest" => 60
+    ),
+  "tundra" => array(
+      "lvl" => 7,
+      "exp" => 10,
+      "gold_min" => 75,
+      "gold_max" => 210,
+      "rest" => 65
+    )
+  );
+
 // if no arg
 if(!isset($arg[0])){
   die('No action specified - use help to get more info!');
 }
 
 // Check if user has all properies
-if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) < 6){
+if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) < 7){
   $p = json_decode($_STATE->{$sender});
   !isset($p->j)?$p->j=1:"";
   !isset($p->l)?$p->l=0:"";
@@ -14,6 +38,7 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
   !isset($p->w)?$p->w=10:"";
   !isset($p->t)?$p->t=time()-45:"";
   !isset($p->o)?$p->o=45:"";
+  !isset($p->m)?$p->m=0:"";
   
   $_STATE->{$sender} = json_encode($p);
 }
@@ -42,24 +67,23 @@ function gainExp($p,$m,$e){
 }
 /*
  * @param (Object)  $p - Player
- * @param (String)  $m - Map
- * @param (Integer) $l - Level required to pass the level
- * @param (Integer) $c - Action cooldown 
- * @param (Integer) $e - Exp reward
+ * @param (Array)   $b - Biome
  */
- function action_pve($p,$m,$l,$c,$e){
+ function action_pve($p,$b){
   global $sender;
   global $_STATE;
-  if($p->l >= $l){
-    $p = gainExp($p,$m,$e);
-    $p->o = $c;
+  global $BIOMES;
+  $cb = $BIOMES[$b];
+  if($p->l >= $cb["lvl"]){
+    $p = gainExp($p,$b,$cb["exp"]);
+    $p->o = $cb["rest"];
     $_STATE->{$sender} = json_encode($p);
   }else{
-    $c*=2;
+    $c=$cb["rest"]*2;
     $p->t = time();
     $p->o = $c;
     $_STATE->{$sender} = json_encode($p);
-    die("You've failed to farm at $m. You will be able to attack in $c seconds.");
+    die("You've failed to farm at $b. You will be able to attack in $c seconds.");
   }
 }
 
@@ -70,14 +94,15 @@ function gainExp($p,$m,$e){
 // (w) => Max Exp
 // (t) => Timestamp of last action
 // (o) => Action cooldown
-echo "tRPG 0.0.35 <|> ";
+// (m) => Money
+echo "tRPG 0.0.37 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
       die("You've already joined the game - use reset, and then join to start a fresh game!");
     }
     $t = time()-45;
-    $_STATE->{$sender} = "{\"j\":1,\"l\":0,\"q\":0,\"w\":10,\"t\":{$t},\"o\":45}";
+    $_STATE->{$sender} = "{\"j\":1,\"l\":0,\"q\":0,\"w\":10,\"t\":{$t},\"o\":45,\"m\":0}";
     die("Welcome to tRPG!");
     break;
   case "reset":
@@ -97,17 +122,11 @@ switch ($arg[0]){
   case "pve":
     $p = json_decode($_STATE->{$sender});
     if((time()-$p->t) >= $p->o ){
-      if(isset($arg[1])){
-        switch($arg[1]){
-          case "forest":
-            action_pve($p,"forest",0,45,3);
-            break;
-          case "tundra":
-            action_pve($p,"tundra",10,60,5);
-            break;
-        }
+      if(isset($arg[1]) and in_array($arg[1], $BIOMES)){
+        action_pve($p,$arg[1]);
+        break;
       } else {
-        die("You've to specify biome! <|> Currently generated: forest, tundra");
+        die("Biome does't exist! <|> Choose one of these: ".implode(",",$BIOMES));
       }
     }else {
       echo "Not so fast! You've to wait before you can attack again!";

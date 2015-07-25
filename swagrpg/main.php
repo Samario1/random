@@ -82,6 +82,13 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
   
   $_STATE->{$sender} = json_encode($p);
 }
+if( isset($_STATE->{$sender}) ){
+  $p = json_decode($_STATE->{$sender});
+  if(isset($p->q) and ($p->q/1 != intval($p->q)) ){
+    $p->q = floor($p->q);
+    $_STATE->{$sender} = json_encode($p);
+  }
+}
 /*
  * @param (Integer) $m - Money
  * @return (String) Formatted money value.

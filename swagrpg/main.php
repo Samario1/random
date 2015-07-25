@@ -1,6 +1,6 @@
 <?php
 
-$GLOBALS["MOBS"] = array(
+global $MOBS = array(
   0 =>  array("name" => "Blue Slime"),
   1 =>  array("name" => "Green Slime"),
   2 =>  array("name" => "Ice Slime"),
@@ -17,7 +17,7 @@ $GLOBALS["MOBS"] = array(
   13 => array("name" => "Granite Elemental")
 );
 
-$GLOBALS["BIOMES"] = array(
+global $BIOMES = array(
   "forest" => array(
     "lvl" => 0,
     "exp" => 5,

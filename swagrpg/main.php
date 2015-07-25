@@ -154,7 +154,7 @@ function gainExp($p,$m,$b,$e,$n){
     $p->w=round($p->w*1.1);
     $p->l++;
     echo "$sender(Level: {$p->l}) has slain {$enm["name"]} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
-    echo " <|> Congrulations, you've gained a level! <|> Current level: {$p->l}";
+    echo " <|> Congrulations, you've gained a level!";
   } else {
     echo "$sender(Level: {$p->l}) has slain {$enm["name"]} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
   }
@@ -182,7 +182,7 @@ function gainExp($p,$m,$b,$e,$n){
     $p->o = $cb["rest"];
     $mn = rand($cb["gold_min"],$cb["gold_max"]);
     $p->m += $mn*($is_night?2:1);
-    echo(" <|> Money gained: ".money_parse($mn)." <|> Current ammount: ".money_parse($p->m)); // TODO: Make money parse into NpNgNsNc format.
+    echo(" <|> Money gained: ".money_parse($mn)); // TODO: Make money parse into NpNgNsNc format.
     $_STATE->{$sender} = json_encode($p);
   }else{
     $c=$cb["rest"]*2;

@@ -77,6 +77,9 @@ function gainExp($p,$m,$e){
   if($p->l >= $cb["lvl"]){
     $p = gainExp($p,$b,$cb["exp"]);
     $p->o = $cb["rest"];
+    $mn = rand($cb["gold_min"],$cb["gold_max"]);
+    $p->m += mn;
+    echo("Money gained: $mn <|> Current ammount: ".$p->m); // TODO: Make money parse into NpNgNsNc format.
     $_STATE->{$sender} = json_encode($p);
   }else{
     $c=$cb["rest"]*2;
@@ -95,7 +98,7 @@ function gainExp($p,$m,$e){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "tRPG 0.0.38 <|> ";
+echo "tRPG 0.0.39 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -117,7 +120,7 @@ switch ($arg[0]){
   case "me":
     $p = json_decode($_STATE->{$sender});
     $t = $p->o-(time()-$p->t)>0?$p->o-(time()-$p->t):0;
-    die($sender." <|> Current level: {$p->l} <|> Current exp: {$p->q} / {$p->w} <|> You'll be be able to attack in: {$t} seconds");
+    die($sender." <|> Current level: {$p->l} <|> Current exp: {$p->q} / {$p->w} <|> Current money: {$p->m} <|> You'll be be able to attack in: {$t} seconds");
     break;
   case "pve":
     $p = json_decode($_STATE->{$sender});

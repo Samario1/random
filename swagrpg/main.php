@@ -1,5 +1,14 @@
 <?php
 
+$ITEMS = array(
+  0 => array("name" => "Wooden Axe", "type" => "axe", "power" => 1, "value" => 50),
+  1 => array("name" => "Wooden Sword", "type" => "sword", "power" => 5, "value" => 50),
+  2 => array("name" => "Wooden Pickaxe", "type" => "pickaxe", "power" => 1, "value" => 50),
+  3 => array("name" => "Stone", "type" => "block", "value" => 0),
+  4 => array("name" => "Wood", "type" => "block", "value" => 0),
+  5 => array("name" => "Gel", "type" => "material", "value" => 1)
+);
+
 $MOBS = array(
   0 =>  array("name" => "Blue Slime"),
   1 =>  array("name" => "Green Slime"),
@@ -69,7 +78,7 @@ if(!isset($arg[0])){
   die('No action specified - use help to get more info!');
 }
 
-// Check if user has all properies
+// Check if user has all properies - used only for test phase. later on will be ditched.
 if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) < 8){
   $p = json_decode($_STATE->{$sender});
   !isset($p->j)?$p->j=1:"";
@@ -174,7 +183,7 @@ function gainExp($p,$m,$b,$e,$n){
   }
 }
 
-echo "swagRPG 0.0.49 <|> ";
+echo "swagRPG 0.0.50 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -190,6 +199,9 @@ switch ($arg[0]){
     $p->o=45; // Rest time
     $p->m=0; // Money
     $p->i=new SplFixedArray(32);   // Inventory
+    $p->i[0] = 0;
+    $p->i[1] = 1;
+    $p->i[2] = 2;
     $_STATE->{$sender} = json_encode($p);
     die("Welcome to tRPG!");
     break;
@@ -233,6 +245,13 @@ switch ($arg[0]){
   case "help":
     die('Use [pve <biome>] to fight mobs. Use [pve] to get biomes list. Use [me] to get information about yourself. Use [info] to get more info!');
     break;
+  case "noob-kit":
+    $p = json_decode($_STATE->{$sender});
+    $p->i[0]==0;
+    $p->i[1]==1;
+    $p->i[2]==2;
+    $_STATE->{$sender} = json_encode($p);
+    die('');
   default:
     die('Invalid action! Use help to get more info!');
 }

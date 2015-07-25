@@ -219,6 +219,9 @@ switch ($arg[0]){
       die();
     }
     break;
+  case "explore":
+    die("You are not yet ready to explore!");
+    break;
   case "notes":
     die("Coming soon: [mine] - you will be able to go mine various ores,stones - don't expect todo anything with them yet!");
     break;

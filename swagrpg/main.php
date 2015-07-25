@@ -73,9 +73,9 @@ function money_parse($m){
  */
 function game_time(){
   return array(
-      "H": sprintf('%.00F',(time()%1440)/60),
-      "M": sprintf('%.00F',time()%60),
-      "F": sprintf('%.00F',(time()%1440)/60).":".sprintf('%.00F',time()%60)
+      "H" => sprintf('%.00F',(time()%1440)/60),
+      "M" => sprintf('%.00F',time()%60),
+      "F" => sprintf('%.00F',(time()%1440)/60).":".sprintf('%.00F',time()%60)
     );
 }
 /*

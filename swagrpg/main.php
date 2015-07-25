@@ -6,21 +6,24 @@ $BIOMES = array(
       "exp" => 5,
       "gold_min" => 35,
       "gold_max" => 150,
-      "rest" => 45
+      "rest" => 45,
+      "mobs" => array("Blue Slime","Green Slime")
     ),
-  "desert" => array(
+  "tundra" => array(
       "lvl" => 4,
       "exp" => 7,
       "gold_min" => 50,
       "gold_max" => 160,
-      "rest" => 60
+      "rest" => 60,
+      "mobs" = > array("Ice Slime")
     ),
-  "tundra" => array(
+  "desert" => array(
       "lvl" => 7,
       "exp" => 10,
       "gold_min" => 75,
       "gold_max" => 210,
-      "rest" => 65
+      "rest" => 75,
+      "mobs" = > array("Antlion","Sand Slime","Vulture")
     )
   );
 
@@ -57,19 +60,21 @@ function money_parse($m){
  * @param (Object)  $p - Player
  * @param (Integer) $e - Exp 
  * @param (String)  $m - Map
+ * @param (Array)   $b - Biome
  * @return (Object) $p - Player with gained exp
  */
-function gainExp($p,$m,$e){
+function gainExp($p,$m,$b,$e){
   global $sender;
   $p->q+=$e;
+  $enm = $b['m']['mobs'][array_rand($b['m']['mobs'])];
   if($p->q >= $p->w){
     $p->q -= $p->w;
     $p->w=round($p->w*1.1);
     $p->l++;
-    echo "$sender(Level: {$p->l})  slain {{enemy}} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
+    echo "$sender(Level: {$p->l})  slain $enm in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
     echo " <|> Congrulations, you've gained a level! <|> Current level: {$p->l}";
   } else {
-    echo "$sender(Level: {$p->l})  slain {{enemy}} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
+    echo "$sender(Level: {$p->l})  slain $enm in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
   }
     
   $p->t=time();
@@ -85,7 +90,7 @@ function gainExp($p,$m,$e){
   global $BIOMES;
   $cb = $BIOMES[$b];
   if($p->l >= $cb["lvl"]){
-    $p = gainExp($p,$b,$cb["exp"]);
+    $p = gainExp($p,$b,$cb,$cb["exp"]);
     $p->o = $cb["rest"];
     $mn = rand($cb["gold_min"],$cb["gold_max"]);
     $p->m += $mn;
@@ -108,7 +113,7 @@ function gainExp($p,$m,$e){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "tRPG 0.0.40 <|> ";
+echo "tRPG 0.0.42 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

@@ -53,6 +53,10 @@ if( isset($_STATE->{$sender}) and count((array)json_decode($_STATE->{$sender})) 
   
   $_STATE->{$sender} = json_encode($p);
 }
+/*
+ * @param (Integer) $m - Money
+ * @return (String) Formatted money value.
+ */
 function money_parse($m){
   $c =  $m%100;
   $m -= $c;
@@ -63,6 +67,12 @@ function money_parse($m){
   $p =  floor($m/1000000)%100;
 
   return ($p>0?$p+" Plat. ":"").($g>0?$g." Gold ":"").($s>0?$s." Silver ":"").$c." Copper";
+}
+/*
+ * @return (Integer) Current game time
+ */
+function game_time(){
+  return sprintf("%.02F",(time()%1440)/60);
 }
 /*
  * @param (Object)  $p - Player
@@ -123,7 +133,7 @@ function gainExp($p,$m,$b,$e){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "tRPG 0.0.42 <|> ";
+echo "tRPG 0.0.43 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){

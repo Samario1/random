@@ -120,16 +120,16 @@ function gainExp($p,$m,$b,$e,$n){
   global $MOBS;
   $p->q+=round($e*($n?2:1));
   $enm = $MOBS[$b['mobs'][$n?"night":"day"][array_rand($b['mobs'][$n?"night":"day"])]];
-  $enm = (in_array($enm[0],array('A','E','I','O','U'))?"an ":"a ").$enm;
+  $enm["name"] = (in_array($enm["name"][0],array('A','E','I','O','U'))?"an ":"a ").$enm["name"];
   $m = ucfirst($m);
   if($p->q >= $p->w){
     $p->q -= $p->w;
     $p->w=round($p->w*1.1);
     $p->l++;
-    echo "$sender(Level: {$p->l}) has slain $enm in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
+    echo "$sender(Level: {$p->l}) has slain {$enm["name"]} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
     echo " <|> Congrulations, you've gained a level! <|> Current level: {$p->l}";
   } else {
-    echo "$sender(Level: {$p->l}) has slain $enm in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
+    echo "$sender(Level: {$p->l}) has slain {$enm["name"]} in the $m! Exp gained: $e <|> Current exp: {$p->q} / {$p->w}";
   }
     
   $p->t=time();

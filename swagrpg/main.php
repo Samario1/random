@@ -5,7 +5,7 @@ $MOBS = array(
   1 =>  array("name" => "Green Slime"),
   2 =>  array("name" => "Ice Slime"),
   3 =>  array("name" => "Sand Slime"),
-  4 =>  array("name" => "Lava Slime")
+  4 =>  array("name" => "Lava Slime"),
   5 =>  array("name" => "Antlion"),
   6 =>  array("name" => "Antlion Charger"),
   7 =>  array("name" => "Antlion Swarmer"),

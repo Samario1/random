@@ -102,7 +102,7 @@ function gainExp($p,$m,$b,$e,$n){
   global $sender;
   $p->q+=round($e*($n?2:1));
   $enm = $b['mobs'][$n?"night":"day"][array_rand($b['mobs'][$n?"night":"day"])];
-  $enm = (in_array($enm[0],array('a','e','i','o','u'))?"an ":"a ").$enm;
+  $enm = (in_array($enm[0],array('A','E','I','O','U'))?"an ":"a ").$enm;
   $m = ucfirst($m);
   if($p->q >= $p->w){
     $p->q -= $p->w;

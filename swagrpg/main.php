@@ -72,7 +72,11 @@ function money_parse($m){
  * @return (Integer) Current game time
  */
 function game_time(){
-  return sprintf("%.02F",(time()%1440)/60);
+  return array(
+      "H": sprintf('%.00F',(time()%1440)/60),
+      "M": sprintf('%.00F',time()%60),
+      "F": sprintf('%.00F',(time()%1440)/60).":".sprintf('%.00F',time()%60)
+    );
 }
 /*
  * @param (Object)  $p - Player
@@ -133,7 +137,7 @@ function gainExp($p,$m,$b,$e){
 // (t) => Timestamp of last action
 // (o) => Action cooldown
 // (m) => Money
-echo "tRPG 0.0.43 <|> ";
+echo "tRPG 0.0.45 <|> ";
 switch ($arg[0]){
   case "join":
     if(isset($_STATE->{$sender})){
@@ -171,8 +175,11 @@ switch ($arg[0]){
       die();
     }
     break;
-  case "info":
+  case "notes":
     die("Coming soon: [mine] - you will be able to go mine various ores,stones - don't expect todo anything with them yet!");
+    break;
+  case "info":
+    die("Current game time: ".game_time()["F"]);
     break;
   case "help":
     die('Use [pve <biome>] to fight mobs. Use [pve] to get biomes list. Use [me] to get information about yourself. Use [info] to get more info!');

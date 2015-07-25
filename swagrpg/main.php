@@ -98,7 +98,8 @@ $BIOMES = array(
     "mobs" => array(
       "day"   => array(4,12,13),
       "night" =>  array(4,12,13)
-    ),
+    )
+  ),
       "jungle" => array(
     "lvl" => 15,
     "exp" => 16,

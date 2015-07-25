@@ -49,7 +49,10 @@ $MOBS = array(
   10 => array("name" => "Zombie Eskimo"),
   11 => array("name" => "Demon Eye"),
   12 => array("name" => "Hellbat"),
-  13 => array("name" => "Granite Elemental")
+  13 => array("name" => "Granite Elemental"),
+  14 => array("name" => "Hornet"),
+  15 => array("name" => "Man Eater"),
+  16 => array("name" => "Spiked Jungle Slime")
 );
 
 $BIOMES = array(
@@ -95,6 +98,16 @@ $BIOMES = array(
     "mobs" => array(
       "day"   => array(4,12,13),
       "night" =>  array(4,12,13)
+    ),
+      "jungle" => array(
+    "lvl" => 15,
+    "exp" => 16,
+    "gold_min" => 115,
+    "gold_max" => 310,
+    "rest" => 105,
+    "mobs" => array(
+      "day"   => array(14,15,16),
+      "night" =>  array(14,15)
     )
   )
   );
